@@ -2,8 +2,8 @@ baseURL = "https://kulics.github.io/"
 title = "kulics"
 theme = "hugo-coder"
 
-languageCode = "en"
-defaultcontentlanguage = "en"
+languageCode = "zh"
+defaultcontentlanguage = "zh"
 
 paginate = 20
 canonifyurls = true
@@ -46,47 +46,17 @@ disqusShortname = "yourdiscussshortname"
     weight = 2
     url = "https://twitter.com/kulicswu/"
 
-[languages]
-    [languages.en]
-        languagename = "English"
+[[menu.main]]
+name = "Posts"
+weight = 1
+url = "posts/"
 
-        [languages.en.menu]
+[[menu.main]]
+name = "About"
+weight = 2
+url = "about/"
 
-            [[languages.en.menu.main]]
-            name = "Blog"
-            weight = 1
-            url = "posts/"
-
-            [[languages.en.menu.main]]
-            name = "About"
-            weight = 2
-            url = "about/"
-
-            [[languages.en.menu.main]]
-            name = "Projects"
-            weight = 3
-            url = "projects/"
-    [languages.zh]
-        languagename = "中文"
-
-        [languages.zh.params]
-            info = "全栈工程师"
-            description = "Kulics 的个人网站"
-            footercontent = "开放思维。"
-
-        [languages.zh.menu]
-
-            [[languages.zh.menu.main]]
-            name = "博客"
-            weight = 1
-            url = "posts/"
-
-            [[languages.zh.menu.main]]
-            name = "关于"
-            weight = 2
-            url = "about/"
-
-            [[languages.zh.menu.main]]
-            name = "项目"
-            weight = 3
-            url = "projects/"
+[[menu.main]]
+name = "Projects"
+weight = 3
+url = "projects/"
