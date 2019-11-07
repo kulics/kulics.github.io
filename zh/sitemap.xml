@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://kulics.github.io/zh/</loc>
+    <lastmod>2019-11-07T14:23:22+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kulics.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://kulics.github.io/zh/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://kulics.github.io/zh/posts/</loc>
+    <lastmod>2019-11-07T14:23:22+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kulics.github.io/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://kulics.github.io/zh/posts/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://kulics.github.io/zh/posts/test/</loc>
+    <lastmod>2019-11-07T14:23:22+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kulics.github.io/posts/test/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://kulics.github.io/zh/posts/test/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://kulics.github.io/zh/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kulics.github.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://kulics.github.io/zh/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://kulics.github.io/zh/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kulics.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://kulics.github.io/zh/tags/"
+                />
+  </url>
+  
+</urlset>
