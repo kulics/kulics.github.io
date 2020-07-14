@@ -16,7 +16,7 @@ disqusShortname = "yourdiscussshortname"
 
 [params]
     author = "Kulics"
-    info = "Full Stack Developer"
+    info = "Normal Developer"
     description = "Kulics' personal website"
     keywords = "blog,developer,personal"
     avatarurl = "images/avatar.jpg"
