@@ -6,18 +6,25 @@
     <description>Recent content on kulics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 07 Nov 2019 14:23:22 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2020 14:23:22 +0800</lastBuildDate>
     
 	<atom:link href="https://kulics.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Test</title>
-      <link>https://kulics.github.io/posts/test/</link>
-      <pubDate>Thu, 07 Nov 2019 14:23:22 +0800</pubDate>
+      <title>打破常规，回归直觉—— Feel 语言设计</title>
+      <link>https://kulics.github.io/posts/p0001/</link>
+      <pubDate>Mon, 13 Jul 2020 14:23:22 +0800</pubDate>
       
-      <guid>https://kulics.github.io/posts/test/</guid>
-      <description></description>
+      <guid>https://kulics.github.io/posts/p0001/</guid>
+      <description>设计背景 几年前我在开发多平台的 XyKey 时，由于当时的跨平台方案还未成熟，所以我没有选择跨平台实现，而是选择了每个平台都使用官方指定的语言进行开发，为此我接触了 Java/Kotlin（Android）、Swift/OC（iOS）、C#（UWP）。于此同时我本职工作方向是区块链技术，现有主流区块链方案也大量使用了 JS + Go 的组合开发前后端产品。
+在不同语言之间来回切换学习之后，我对不同语言表达同一种功能的语法差异性产生了兴趣，随后开始了语法设计方面的研究探索，最终诞生了 Feel 语言。
+语言设计问题之一 很多语言里面，函数存在不止一种表达方法。
+我们需要为同样的需求设计不同的语法吗？
+以下我举一些我使用过的语言中函数的表示方法，所有的 eg 都是函数。
+Go: 大部分时候函数都使用 func 开头声明，算是一致性比较好的设计之一，但在 interface 中还是使用了不一样的描述方式。
+func eg1(x int) int { return 1 } var eg2 = func(x int) int { return 1 } type foo struct { eg3 func(int) int } type bar interface { eg4(int) int } C#: 大部分时候都使用了 C 式的描述方式，但在函数类型中使用了反直觉的泛型类型，并且 Lambda 语法也看不出与函数的联系。
+int eg1(int x) { Func&amp;lt;int,int&amp;gt; eg2 = (int x) =&amp;gt; { return 1; }; return 1; } interface foo { int eg3(int x); } Action&amp;lt;int&amp;gt; eg4; Kotlin: 函数定义、函数类型、Lambda 是三种风格。</description>
     </item>
     
   </channel>
