@@ -6,10 +6,19 @@
     <description>Recent content on kulics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 13 Jul 2020 14:23:22 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2020 20:24:28 +0800</lastBuildDate>
     
 	<atom:link href="https://kulics.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Out of the box, back to intuition - Feel Lang Design</title>
+      <link>https://kulics.github.io/posts/p0002/</link>
+      <pubDate>Sat, 18 Jul 2020 20:24:28 +0800</pubDate>
+      
+      <guid>https://kulics.github.io/posts/p0002/</guid>
+      <description>Design background When I was developing a multi-platform XyKey a few years ago, I didn&amp;rsquo;t have the option because the cross-platform solution wasn&amp;rsquo;t mature enough at the time Instead of a cross-platform implementation, I chose to develop for each platform using the official language, for which I approached Java/ Kotlin (Android), Swift/OC (iOS), C# (UWP). I also work on blockchain technology, and the existing mainstream blockchain solutions also make extensive use of JS + Go&amp;rsquo;s Combining front and back-end product development.</description>
+    </item>
     
     <item>
       <title>打破常规，回归直觉—— Feel 语言设计</title>

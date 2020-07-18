@@ -10,40 +10,26 @@
     <meta name="keywords" content="blog,developer,personal">
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="打破常规，回归直觉—— Feel 语言设计"/>
-<meta name="twitter:description" content="设计背景 几年前我在开发多平台的 XyKey 时，由于当时的跨平台方案还未成熟，所以我没有选择跨平台实现，而是选择了每个平台都使用官方指定的语言进行开发，为此我接触了 Java/Kotlin（Android）、Swift/OC（iOS）、C#（UWP）。于此同时我本职工作方向是区块链技术，现有主流区块链方案也大量使用了 JS &#43; Go 的组合开发前后端产品。
-在不同语言之间来回切换学习之后，我对不同语言表达同一种功能的语法差异性产生了兴趣，随后开始了语法设计方面的研究探索，最终诞生了 Feel 语言。
-语言设计问题之一 很多语言里面，函数存在不止一种表达方法。
-我们需要为同样的需求设计不同的语法吗？
-以下我举一些我使用过的语言中函数的表示方法，所有的 eg 都是函数。
-Go: 大部分时候函数都使用 func 开头声明，算是一致性比较好的设计之一，但在 interface 中还是使用了不一样的描述方式。
-func eg1(x int) int { return 1 } var eg2 = func(x int) int { return 1 } type foo struct { eg3 func(int) int } type bar interface { eg4(int) int } C#: 大部分时候都使用了 C 式的描述方式，但在函数类型中使用了反直觉的泛型类型，并且 Lambda 语法也看不出与函数的联系。
-int eg1(int x) { Func&lt;int,int&gt; eg2 = (int x) =&gt; { return 1; }; return 1; } interface foo { int eg3(int x); } Action&lt;int&gt; eg4; Kotlin: 函数定义、函数类型、Lambda 是三种风格。"/>
+<meta name="twitter:title" content="Out of the box, back to intuition - Feel Lang Design"/>
+<meta name="twitter:description" content="Design background When I was developing a multi-platform XyKey a few years ago, I didn&rsquo;t have the option because the cross-platform solution wasn&rsquo;t mature enough at the time Instead of a cross-platform implementation, I chose to develop for each platform using the official language, for which I approached Java/ Kotlin (Android), Swift/OC (iOS), C# (UWP). I also work on blockchain technology, and the existing mainstream blockchain solutions also make extensive use of JS &#43; Go&rsquo;s Combining front and back-end product development."/>
 
-    <meta property="og:title" content="打破常规，回归直觉—— Feel 语言设计" />
-<meta property="og:description" content="设计背景 几年前我在开发多平台的 XyKey 时，由于当时的跨平台方案还未成熟，所以我没有选择跨平台实现，而是选择了每个平台都使用官方指定的语言进行开发，为此我接触了 Java/Kotlin（Android）、Swift/OC（iOS）、C#（UWP）。于此同时我本职工作方向是区块链技术，现有主流区块链方案也大量使用了 JS &#43; Go 的组合开发前后端产品。
-在不同语言之间来回切换学习之后，我对不同语言表达同一种功能的语法差异性产生了兴趣，随后开始了语法设计方面的研究探索，最终诞生了 Feel 语言。
-语言设计问题之一 很多语言里面，函数存在不止一种表达方法。
-我们需要为同样的需求设计不同的语法吗？
-以下我举一些我使用过的语言中函数的表示方法，所有的 eg 都是函数。
-Go: 大部分时候函数都使用 func 开头声明，算是一致性比较好的设计之一，但在 interface 中还是使用了不一样的描述方式。
-func eg1(x int) int { return 1 } var eg2 = func(x int) int { return 1 } type foo struct { eg3 func(int) int } type bar interface { eg4(int) int } C#: 大部分时候都使用了 C 式的描述方式，但在函数类型中使用了反直觉的泛型类型，并且 Lambda 语法也看不出与函数的联系。
-int eg1(int x) { Func&lt;int,int&gt; eg2 = (int x) =&gt; { return 1; }; return 1; } interface foo { int eg3(int x); } Action&lt;int&gt; eg4; Kotlin: 函数定义、函数类型、Lambda 是三种风格。" />
+    <meta property="og:title" content="Out of the box, back to intuition - Feel Lang Design" />
+<meta property="og:description" content="Design background When I was developing a multi-platform XyKey a few years ago, I didn&rsquo;t have the option because the cross-platform solution wasn&rsquo;t mature enough at the time Instead of a cross-platform implementation, I chose to develop for each platform using the official language, for which I approached Java/ Kotlin (Android), Swift/OC (iOS), C# (UWP). I also work on blockchain technology, and the existing mainstream blockchain solutions also make extensive use of JS &#43; Go&rsquo;s Combining front and back-end product development." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kulics.github.io/posts/p0001/" />
-<meta property="article:published_time" content="2020-07-13T14:23:22+08:00" />
-<meta property="article:modified_time" content="2020-07-13T14:23:22+08:00" />
+<meta property="og:url" content="https://kulics.github.io/posts/p0002/" />
+<meta property="article:published_time" content="2020-07-18T20:24:28+08:00" />
+<meta property="article:modified_time" content="2020-07-18T20:24:28+08:00" />
 
 
     
-      <base href="https://kulics.github.io/posts/p0001/">
+      <base href="https://kulics.github.io/posts/p0002/">
     
     <title>
-  打破常规，回归直觉—— Feel 语言设计 · kulics
+  Out of the box, back to intuition - Feel Lang Design · kulics
 </title>
 
     
-      <link rel="canonical" href="https://kulics.github.io/posts/p0001/">
+      <link rel="canonical" href="https://kulics.github.io/posts/p0002/">
     
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
@@ -109,14 +95,14 @@ int eg1(int x) { Func&lt;int,int&gt; eg2 = (int x) =&gt; { return 1; }; return 1
     <article>
       <header>
         <div class="post-title">
-          <h1 class="title">打破常规，回归直觉—— Feel 语言设计</h1>
+          <h1 class="title">Out of the box, back to intuition - Feel Lang Design</h1>
         </div>
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
               <i class="fas fa-calendar"></i>
-              <time datetime='2020-07-13T14:23:22&#43;08:00'>
-                July 13, 2020
+              <time datetime='2020-07-18T20:24:28&#43;08:00'>
+                July 18, 2020
               </time>
             </span>
             <span class="reading-time">
@@ -130,14 +116,14 @@ int eg1(int x) { Func&lt;int,int&gt; eg2 = (int x) =&gt; { return 1; }; return 1
       </header>
 
       <div>
-        <h2 id="设计背景">设计背景</h2>
-<p>几年前我在开发多平台的 XyKey 时，由于当时的跨平台方案还未成熟，所以我没有选择跨平台实现，而是选择了每个平台都使用官方指定的语言进行开发，为此我接触了 Java/Kotlin（Android）、Swift/OC（iOS）、C#（UWP）。于此同时我本职工作方向是区块链技术，现有主流区块链方案也大量使用了 JS + Go 的组合开发前后端产品。</p>
-<p>在不同语言之间来回切换学习之后，我对不同语言表达同一种功能的语法差异性产生了兴趣，随后开始了语法设计方面的研究探索，最终诞生了 Feel 语言。</p>
-<h2 id="语言设计问题之一">语言设计问题之一</h2>
-<p>很多语言里面，函数存在不止一种表达方法。</p>
-<p><strong>我们需要为同样的需求设计不同的语法吗？</strong></p>
-<p>以下我举一些我使用过的语言中函数的表示方法，所有的 eg 都是函数。</p>
-<p>Go: 大部分时候函数都使用 func 开头声明，算是一致性比较好的设计之一，但在 interface 中还是使用了不一样的描述方式。</p>
+        <h2 id="design-background">Design background</h2>
+<p>When I was developing a multi-platform XyKey a few years ago, I didn&rsquo;t have the option because the cross-platform solution wasn&rsquo;t mature enough at the time Instead of a cross-platform implementation, I chose to develop for each platform using the official language, for which I approached Java/ Kotlin (Android), Swift/OC (iOS), C# (UWP). I also work on blockchain technology, and the existing mainstream blockchain solutions also make extensive use of JS + Go&rsquo;s Combining front and back-end product development.</p>
+<p>After switching back and forth between languages, I became interested in the grammatical differences in expressing the same functionality in different languages, which led to an exploration of grammatical design, which led to the birth of Feel.</p>
+<h2 id="language-design-problem-number-one">Language design problem number one</h2>
+<p>In many languages, there is more than one way to express a function.</p>
+<p><strong>Do we need to design different syntaxes for the same requirements?</strong></p>
+<p>Below are some examples of functions in the languages I&rsquo;ve used, all eg are functions.</p>
+<p>Go: Most of the time functions are declared with func, it&rsquo;s one of the more consistent design, but in interface still uses a different way of describing things.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="font-weight:bold">func</span> eg1(x <span style="">int</span>) <span style="">int</span> {
 	<span style="font-weight:bold">return</span> 1
 }
@@ -153,7 +139,7 @@ int eg1(int x) { Func&lt;int,int&gt; eg2 = (int x) =&gt; { return 1; }; return 1
 <span style="font-weight:bold">type</span> bar <span style="font-weight:bold">interface</span> {
 	eg4(<span style="">int</span>) <span style="">int</span>
 }
-</code></pre></div><p>C#: 大部分时候都使用了 C 式的描述方式，但在函数类型中使用了反直觉的泛型类型，并且 Lambda 语法也看不出与函数的联系。</p>
+</code></pre></div><p>C#: uses C-style descriptions most of the time, but uses counterintuitive generic types in function types. And the Lambda syntax doesn&rsquo;t see the connection to functions.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="">int</span> eg1(<span style="">int</span> x) 
 {
     Func&lt;<span style="">int</span>,<span style="">int</span>&gt; eg2 = (<span style="">int</span> x) =&gt; 
@@ -169,7 +155,7 @@ int eg1(int x) { Func&lt;int,int&gt; eg2 = (int x) =&gt; { return 1; }; return 1
 }
 
 Action&lt;<span style="">int</span>&gt; eg4;
-</code></pre></div><p>Kotlin: 函数定义、函数类型、Lambda 是三种风格。</p>
+</code></pre></div><p>Kotlin: function definition, function type, and lambda are the three styles.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">fun</span> eg1(x: Int): Int {
     <span style="font-weight:bold">val</span> eg2: (Int) -&gt; Int = { i -&gt;
         1
@@ -185,7 +171,7 @@ Action&lt;<span style="">int</span>&gt; eg4;
     <span style="font-weight:bold">fun</span> eg4(x: Int)
     <span style="font-weight:bold">val</span> eg5: (Int) -&gt; Unit
 }
-</code></pre></div><p>Swift: swift比较好的地方是函数定义和函数类型使用了同样的箭头表示，但在 Lambda 中却使用了 in 来分割。</p>
+</code></pre></div><p>Swift: The better thing about swift is that function definitions and function types are represented using the same arrows, but in the Lambda, however, uses in for partitioning.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> eg1(x: Int) -&gt; Int {
     <span style="font-weight:bold">let</span> eg2: (Int) -&gt; Int = { i <span style="font-weight:bold">in</span>
         <span style="font-weight:bold">return</span> 1
@@ -198,9 +184,9 @@ Action&lt;<span style="">int</span>&gt; eg4;
 }
 
 <span style="font-weight:bold">var</span> eg4: (Int) -&gt; ()
-</code></pre></div><p>为一个资源绑定一个名称，同样也有很多不同的写法。</p>
-<p>以下我举一些我使用过的语言中标识符表示方法，所有的 eg 都是某个资源的标识符。</p>
-<p>Swift: 为不同类型绑定标识符使用不同前缀，算是比较好的实践之一。</p>
+</code></pre></div><p>Bind a name to a resource, also can be written in many different ways.</p>
+<p>Below are some of the language identifier representations I&rsquo;ve used, all eg is an identifier of a resource.</p>
+<p>Swift: Using different prefixes for different types of bind identifiers is one of the better practices.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> eg1 = 1
 
 <span style="font-weight:bold">let</span> eg2 = 1
@@ -210,7 +196,7 @@ Action&lt;<span style="">int</span>&gt; eg4;
 <span style="font-weight:bold">class</span> <span style="font-weight:bold">eg4</span> {}
 
 <span style="font-weight:bold">protocol</span> <span style="font-weight:bold">eg5</span> {}
-</code></pre></div><p>Go: 变量、常量和函数使用了一种风格，定义类型使用了另一种风格。</p>
+</code></pre></div><p>Go: variables, constants, and functions use one style, and defined types use another.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="font-weight:bold">var</span> eg1 = 1
 
 <span style="font-weight:bold">const</span> eg2 = 1
@@ -220,16 +206,16 @@ Action&lt;<span style="">int</span>&gt; eg4;
 <span style="font-weight:bold">type</span> eg4 <span style="font-weight:bold">struct</span>{}
 
 <span style="font-weight:bold">type</span> eg5 <span style="font-weight:bold">interface</span>{}
-</code></pre></div><p>C#： 类和接口使用了一种风格，变量、常量、函数使用了三种不同的风格。</p>
+</code></pre></div><p>C#: Classes and interfaces use one style, variables, constants, and functions use three different styles.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">int eg1 = 1
 const int eg2 = 2
 int eg3() {}
 class eg4 {}
 interface eg5 {}
-</code></pre></div><h2 id="语言设计问题之二">语言设计问题之二</h2>
-<p>一旦我们开始开发一个具备一定规模的项目，就一定会反复强调编码规范的重要性。形式不一的代码风格会给我们的协作带来不小的困难。</p>
-<p><strong>如果规范如此重要，我们是否应该在语言级别强制？</strong></p>
-<p>下面我给出几种不同的代码风格，在不统一风格的情况下，我们可能会见到如下几种代码并存：</p>
+</code></pre></div><h2 id="language-design-problem-number-two">Language design problem number two</h2>
+<p>Once we start developing a project of a certain size, the importance of coding conventions is always repeated. Varying code styles can make it difficult for us to collaborate.</p>
+<p><strong>If the specification is so important, should we force it at the language level?</strong></p>
+<p>Below I give several different styles of code, and in the absence of a uniform style, we may see the following codes coexist.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">if</span> (foo == 0) 
 {
   	print(foo)
@@ -261,7 +247,7 @@ interface eg5 {}
   	print(foo)
 }
 
-</code></pre></div><p>当然，也可能有人会写出下面这样的：</p>
+</code></pre></div><p>Of course, one might also write the following.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">if</span> (foo == 0) 
 		{
     print(foo)
@@ -278,10 +264,10 @@ interface eg5 {}
 <span style="font-weight:bold">if</span> (foo == 0) print(foo)
 <span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (foo == 1) print(foo)
 <span style="font-weight:bold">else</span> print(foo)
-</code></pre></div><h2 id="语言设计问题之三">语言设计问题之三</h2>
-<p>一些语言是动态的，一些语言是静态的，它们各有各的好，但是我们却尝试在动态语言中加入静态特性（TypeScript），也尝试在静态语言中加入动态特性（Go）。</p>
-<p><strong>这静态与动态中间是否存在一个平衡的方案？</strong></p>
-<p>TypeScript：通过隐式接口，给动态类型加上类型检查，只有满足接口要求的对象才能被使用。</p>
+</code></pre></div><h2 id="language-design-problem-number-three">Language design problem number three</h2>
+<p>Some languages are dynamic and some are static, and they have their own merits, but we try to add static features to dynamic languages (TypeScript) and dynamic features to static languages (Go).</p>
+<p><strong>Is there a balance between this static and dynamic solution?</strong></p>
+<p>TypeScript: Through an implicit interface, dynamic types are given a type check so that only objects that meet the interface requirements can be used.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">interface</span> LabelledValue {
     label: <span style="">string</span>;
 }
@@ -293,7 +279,7 @@ interface eg5 {}
 <span style="font-weight:bold">let</span> myObj = { size: <span style="">10</span>, label: <span style="font-style:italic">&#34;Size 10 Object&#34;</span> };
 printLabel(myObj);
 
-</code></pre></div><p>Go：通过隐式接口，实现了静态鸭子类型，只有满足函数签名要求的对象才能被使用。</p>
+</code></pre></div><p>Go: implements a static duck type via an implicit interface, where only objects that meet the function signature requirements are used.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="font-weight:bold">type</span> LabelledValue <span style="font-weight:bold">interface</span> {
 	Label() <span style="">string</span>
 }
@@ -310,10 +296,10 @@ printLabel(myObj);
 	<span style="font-weight:bold">return</span> <span style="font-style:italic">&#34;Size 10 Object&#34;</span>
 }
 
-</code></pre></div><h2 id="语言设计问题之四">语言设计问题之四</h2>
-<p>不同语言的关键字有多有少，但实际上大部分语言都可以实现图灵完备。</p>
-<p><strong>我们需要很多关键字吗？或者说，如果没有关键字，是否也可以？</strong></p>
-<p>下面是某个语言的关键字，还有部分上下文关键字未展示出来。</p>
+</code></pre></div><h2 id="language-design-problem-number-four">Language design problem number four</h2>
+<p>There are more and less keywords in different languages, but in fact most languages can be Turing-complete.</p>
+<p><strong>Do we need a lot of keywords? Or, if there are no keywords, is it okay?</strong></p>
+<p>Below are keywords for a language, and some contextual keywords not shown.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">| keyword   |            |           |           |
 | --------- | ---------- | --------- | --------- |
 | abstract  | as         | base      | bool      |
@@ -336,91 +322,91 @@ printLabel(myObj);
 | ulong     | unchecked  | unsafe    | ushort    |
 | using     | virtual    | void      | volatile  |
 | while     |            |           |           |
-</code></pre></div><h2 id="关键问题">关键问题</h2>
-<p>一、同一种功能是否需要多种语法？</p>
-<p><strong>我们不需要多种语法，相同的需求可以有机统一。</strong></p>
-<p>二、强制规范是否有必要？</p>
-<p><strong>强制规范可以减少代码阅读和维护的压力，在语言级实施规范可以提升所有使用者的协作效率。</strong></p>
-<p>三、我们想要的是静态类型还是动态类型？</p>
-<p><strong>我们既想要静态检查，也想要动态自由度。静态鸭子类型可能是一个方案。</strong></p>
-<p>四、关键字是必要的吗？</p>
-<p><strong>如果语法结构足够少，我们可以试试移除关键字。</strong></p>
-<h2 id="函数">函数</h2>
-<p>我们对函数语法需求可以总结为如下几点：</p>
+</code></pre></div><h2 id="key-issues">Key issues</h2>
+<p>1 . Do I need more than one syntax for the same function?</p>
+<p><strong>We don&rsquo;t need multiple grammars, the same needs can be unified organically.</strong></p>
+<p>2 . Is compulsory regulation necessary?</p>
+<p><strong>Mandating specifications reduces the stress of code reading and maintenance, and implementing specifications at the language level improves collaboration efficiency for all users.</strong></p>
+<p>3 . Do we want a static type or a dynamic type?</p>
+<p><strong>We want both static checks and dynamic degrees of freedom. Static duck type might be a solution.</strong></p>
+<p>4 . Are keywords necessary?</p>
+<p><strong>If the syntax structure is small enough, we can try removing the keyword.</strong></p>
+<h2 id="functions">Functions</h2>
+<p>Our needs for function syntax can be summarized as follows.</p>
 <ul>
-<li>函数也是值，定义函数的方式与定义函数变量的方式应该一致。</li>
-<li>函数定义里的类型，与函数的类型应该一致。</li>
-<li>Lambda表达式与函数定义应该具有明显的相似度。</li>
+<li>Functions are also values, and the way you define a function should be the same as the way you define a function variable.</li>
+<li>The type in a function definition should be the same as the type of the function.</li>
+<li>Lambda expressions should be remarkably similar to function definitions.</li>
 </ul>
-<p>假设我们所有资源的定义方式都使用 <code>let id = XXX</code>的形式，并且统一使用 <code>type {}</code>的形式构建某种类型的值。</p>
-<p>那么我们可以先给出这样一个函数语法：</p>
+<p>Suppose that all our resources are defined using the form <code>let id = XXX</code>, and that values of some type are constructed uniformly using the form <code>type {}</code>.</p>
+<p>Then we can start by giving a function syntax like this.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x: int) int {
     return 1
 }
-</code></pre></div><p>这个语法非常普通，使用<code>func</code>关键字定义类型，<code>()</code>里声明形参，后面声明返回值。</p>
-<p>接下来我们思考一下现代函数设计通常允许多返回值，因此我们需要使用<code>()</code>包装更多返回值。</p>
+</code></pre></div><p>The syntax is very common, using the <code>func</code> keyword to define types, a formal parameter in <code>()</code>, and a return value after that.</p>
+<p>Next we consider that modern function designs often allow multiple return values, so we need to use <code>()</code> to wrap more return values.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x: int, y: bool) (int, bool) {
     return (1, true)
 }
-</code></pre></div><p>这样形参和返回值类型的<code>()</code>太接近了，阅读起来比较费力，需要一个分隔符，我们可以引入<code>-&gt;</code>。</p>
+</code></pre></div><p>This is too close to <code>()</code> of the form parameter and return value type, which is difficult to read and requires a separator, so we can introduce <code>-&gt;</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x: int, y: bool) -&gt; (int, bool) {
     return (1, true)
 }
-</code></pre></div><p>当<code>-&gt;</code>加入之后，<code>()-&gt;()</code>就可以构成一个函数的类型结构，此时<code>func</code>的存在就没有必要性了，所以我们去掉这个关键字。</p>
+</code></pre></div><p>When <code>-&gt;</code> is added, <code>()-&gt;()</code> can form the type structure of a function, at which point the existence of <code>func</code> is not necessary, so we remove the keyword.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x: int, y: bool) -&gt; (int, bool) {
     return (1, true)
 }
-</code></pre></div><p>每次都要写两遍<code>()</code>也挺麻烦的，其实我们不太需要两个<code>()</code>，可以将形参和返回值类型放在一起，使用<code>-&gt;</code>分割。顺便也可以将 <code>return</code>的<code>()</code>也省略掉。</p>
+</code></pre></div><p>Writing <code>()</code> twice every time is a bit of a pain, but we don&rsquo;t really need two <code>()</code>s. We can combine the formal parameter and return type put them together and split them using <code>-&gt;</code>. By the way, you can also omit the <code>()</code> of <code>return</code> as well.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x: int, y: bool -&gt; int, bool) {
     return 1, true
 }
-</code></pre></div><p>等等，我们还需要<code>return</code>这个关键字吗？我想应该是不需要了，我们可以使用更好看的<code>&lt;-</code>。</p>
+</code></pre></div><p>Wait, do we still need the <code>return</code> keyword? I don&rsquo;t think it&rsquo;s needed, we could use a better looking <code>&lt;-</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x: int, y: bool -&gt; int, bool) {
     &lt;- 1, true
 }
-</code></pre></div><p>函数左右好像有点不平衡，我们可以强制返回值类型也加上一样的名称描述，让它们看起来更一致，并且也能给使用者更友好的说明。</p>
+</code></pre></div><p>The left and right functions seem a bit unbalanced, we can force the return value types to have the same name description to make them look more consistent. and can also give more user-friendly instructions.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x: int, y: bool -&gt; a: int, b: bool) {
     &lt;- 1, true
 }
-</code></pre></div><p>到这里我们的函数描述方式已经成型，使用<code>(-&gt;)</code>表达函数类型。 Lambda 语法也可以非常自然用<code>-&gt;</code>分割，使用<code>{}</code>定义整个函数的内容。</p>
+</code></pre></div><p>Here we have our function descriptions in place, using <code>(-&gt;)</code> to express function types. The Lambda syntax can also be split quite naturally with <code>-&gt;</code>, using <code>{}</code> to define the contents of the entire function.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo: (int, bool -&gt; int, bool) = { x, y -&gt;
     1, true
 }
-</code></pre></div><p>无参函数与函数参数的例子：</p>
+</code></pre></div><p>Example of an unparallel function with function parameters.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (-&gt;) {}
 let bar = (fn: (-&gt;) -&gt; ) {}
-</code></pre></div><h2 id="定义">定义</h2>
-<p>我们对定义语法需求可以总结为如下几点：</p>
+</code></pre></div><h2 id="definitions">Definitions</h2>
+<p>Our need for a definition grammar can be summarized as follows.</p>
 <ul>
-<li>所有创建名称的行为都是定义，应该使用同一种方式。</li>
-<li>名称比类型的阅读优先级更高，名称应该在前。</li>
-<li>区分可变与不可变。</li>
+<li>All acts of creating a name are definitions and should be used in the same way.</li>
+<li>Names have a higher reading priority than types and should be preceded by the name.</li>
+<li>Distinguish between variable and immutable.</li>
 </ul>
-<p>假设我们先使用 <code>let xxx = value</code> 定义不变量，使用 <code>var xxx = value</code> 定义变量。</p>
+<p>Suppose we start by defining immutable with <code>let xxx = value</code> and define variable with <code>var xxx = value</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo: int = 0
 var bar: int = 0
-</code></pre></div><p>使用<code>var</code>相当于多了一种定义声明的方式，不如使用<code>mut</code>来声明可变性，这样可能具备一致性。</p>
+</code></pre></div><p>Using <code>var</code> is equivalent to one more way of defining declarations, rather than using <code>mut</code> to declare variability, which may have consistency.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo: int = 0
 let mut bar: int = 0
-</code></pre></div><p>我们思考一下，这种结构其实不需要<code>let</code>这个关键字也能成立，所以我们去掉它。</p>
+</code></pre></div><p>Let&rsquo;s think about the fact that this structure actually holds without the <code>let</code> keyword, so we remove it.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo: int = 0
 mut bar: int = 0
-</code></pre></div><p>现在只剩下<code>mut</code>这个关键字了，我们也去掉，使用<code>!</code>替换它，表示可变性、不确定性。</p>
+</code></pre></div><p>Now we are left with the keyword <code>mut</code>, which we also remove and replace it with <code>!</code> instead of it, to denote variability, uncertainty.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo: int = 0
 !bar: int = 0
-</code></pre></div><p>到这里，只要支持类型推导，我们也不需要明确写类型了，省略掉类型后，可以组合成<code>:=</code>。</p>
+</code></pre></div><p>By this point, we don&rsquo;t need to explicitly write the type either, as long as type derivation is supported, and omitting the type allows us to combine it into <code>:=</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo := 0
 !bar := 0
-</code></pre></div><p>当然，如果不一定带值，我们也可以省略右边，保留类型。</p>
+</code></pre></div><p>Of course, if it doesn&rsquo;t necessarily carry a value, we can also omit the right side and keep the type.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo: int
 !bar: int
-</code></pre></div><p>现在我们的定义语法已经完成了，替换前面函数的例子，不需要换多少东西。</p>
+</code></pre></div><p>Now that our definition syntax is complete, replacing the example of the previous function doesn&rsquo;t require changing much of anything.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo := (x: int, y: bool -&gt; a: int, b: bool) {
     &lt;- 1, true
 }
-</code></pre></div><h2 id="选择结构">选择结构</h2>
-<p>现有的选择结构一般包含if与switch两种，它们的形态和功能已经非常成熟了，但我们仍有从格式上进一步简化的可能性。</p>
-<p>我们先给出一个常见的 <code>if</code> 语句，并且假定 <code>{</code>不可以换行。</p>
+</code></pre></div><h2 id="select-structure">Select structure</h2>
+<p>Existing selection constructs, which generally include both if and switch, are very mature in form and function, but there is potential for further format simplification.</p>
+<p>Let&rsquo;s start with a common <code>if</code> statement, and assume that <code>{</code> is not line feedable.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if (foo == 0) {
     ......
 } else if (foo == 1) {
@@ -430,7 +416,7 @@ mut bar: int = 0
 } else {
     ......
 }
-</code></pre></div><p>去掉<code>()</code>似乎不会影响什么，我们先去掉它。</p>
+</code></pre></div><p>Removing <code>()</code> doesn&rsquo;t seem to affect anything, so let&rsquo;s remove it first.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if foo == 0 {
     ......
 } else if foo == 1 {
@@ -440,7 +426,7 @@ mut bar: int = 0
 } else {
     ......
 }
-</code></pre></div><p>我们假定 <code>else if</code>也不可以换行，必须跟在<code>}</code>后面。有了这个约束，我们就可以省略 <code>else if</code>。</p>
+</code></pre></div><p>We assume that <code>else if</code> can&rsquo;t be a line break either, it has to be followed by <code>}</code>. With this constraint, we can omit <code>else if</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if foo == 0 {
     ......
 } foo == 1 {
@@ -450,7 +436,7 @@ mut bar: int = 0
 } else {
     ......
 }
-</code></pre></div><p>同样的道理，<code>else</code>其实也可以不需要，我们可以使用<code>_</code>来替换它。</p>
+</code></pre></div><p>By the same token, <code>else</code> is not really needed; we can replace it with <code>_</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if foo == 0 {
     ......
 } foo == 1 {
@@ -460,7 +446,7 @@ mut bar: int = 0
 } _ {
     ......
 }
-</code></pre></div><p>现在只剩下一个<code>if</code>了，我们用<code>?</code>来表示可选择性，替换掉它。</p>
+</code></pre></div><p>Now there is only one <code>if</code> left, we replace it with <code>?</code> for selectivity, replacing it with <code>?</code></p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">? foo == 0 {
     ......
 } foo == 1 {
@@ -470,8 +456,8 @@ mut bar: int = 0
 } _ {
     ......
 }
-</code></pre></div><p>现在我们完成了选择结构的基本形态，通过强制规范来压缩更多代码。</p>
-<p>对于 <code>switch</code>，与<code>if</code>最大的区别是一个是对单值的匹配，一个是不同值的匹配。所以很显然我们可以在现在的基础上增加语法适配，这里使用<code>[]</code>来表示对单个目标的匹配。</p>
+</code></pre></div><p>Now that we&rsquo;ve completed the basic form of the selection structure, we&rsquo;re compressing more code by forcing the specification.</p>
+<p>For <code>switch</code>, the biggest difference from <code>if</code> is that one is a match for a single value and the other is a match for a different value. So obviously we can add syntactic adaptations to what we have now, where <code>[]</code> is used to represent a match to a single target.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">? [foo] 0 {
     ......
 } 1 {
@@ -481,68 +467,68 @@ mut bar: int = 0
 } _ {
     ......
 }
-</code></pre></div><p>这样我们就得到了两种基础的选择结构。</p>
-<h2 id="循环结构">循环结构</h2>
-<p>现有的循环结构一般包含Foreach、 For三段式、While三种，我们一样可以从格式上进一步简化。</p>
-<p>先给出最简单的例子：</p>
+</code></pre></div><p>This gives us two basic select structures.</p>
+<h2 id="loop-structure">Loop structure</h2>
+<p>Existing loop structures generally contain Foreach, For triplet, and While, but we can also simplify them further in terms of format.</p>
+<p>The simplest example is given first.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for (let i in foo) {
     ......
 }
-</code></pre></div><p>省略掉作用不大的<code>()</code>。</p>
+</code></pre></div><p>Omit the less useful `()&rsquo;.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for let i in foo {
     ......
 }
-</code></pre></div><p><code>let</code>和<code>in</code>都是为了定义从集合里获取的对象，我们可以改成前面的定义语法。</p>
+</code></pre></div><p>Both <code>let</code> and <code>in</code> are used to define the object to be retrieved from the set, and we can change the definition syntax to the previous one.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for i := foo {
     ......
 }
-</code></pre></div><p>现在也只剩<code>for</code>这个关键字了，键盘上可用的符号也不多，我这里取了<code>@</code>替换掉它。</p>
+</code></pre></div><p>Now there&rsquo;s only <code>for</code> left, and there aren&rsquo;t many symbols available on the keyboard, so I&rsquo;ve replaced it with <code>@</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ i := foo {
     ......
 }
-</code></pre></div><p>这样我们就得到了循环结构的基本形态。</p>
-<p>我们再来看看传统的三段式结构：</p>
+</code></pre></div><p>This gives us the basic shape of the circular structure.</p>
+<p>Let&rsquo;s go back to the traditional three-stage structure.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for (i := 0; i &lt; 10; i++) {
 		......
 }
-</code></pre></div><p>这种结构形式比较复杂，不少新语言都放弃了这种写法，而使用区间运算符代替，大部分形式为 <code>begin .. end</code> 。</p>
-<p>我们最常使用的区间包含<strong>递增左闭右开</strong>，<strong>递增全闭</strong>，<strong>递减左闭右开</strong>，<strong>递增全闭</strong>四种。</p>
-<p>因此只需要组合四种形式的区间运算符就足够我们使用了，以下按顺序给出。</p>
+</code></pre></div><p>This structural form is complex, and many new languages have abandoned it in favor of interval operators, mostly of the form <code>begin ... end</code>.</p>
+<p>The most commonly used intervals are <strong>increasingly left-closed-right-open</strong>, <strong>increasingly all-closed</strong>, <strong>decreasingly left-closed-right-open</strong>, and <strong>increasingly all-closed</strong>.</p>
+<p>So it is sufficient to combine only four forms of interval operators, which are given below in the order in which they are used.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">begin ..&lt; end
 begin .. end
 
 begin ..&gt; end
 begin ... end
-</code></pre></div><p>现在我们可以使用区间运算符来实现大部分三段式的需求。</p>
+</code></pre></div><p>Now we can use the interval operator for most of the trivial requirements.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ i := 0 ..&lt; 10 {
     ......
 }
-</code></pre></div><p>最后直接传入一个表达式，就能满足While的需求。</p>
+</code></pre></div><p>Finally, passing in an expression directly will satisfy the While requirement.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ foo &lt; bar {
     ......
 }
-</code></pre></div><h2 id="对象模版">对象模版</h2>
-<p>类型是我们描述对象的数据和行为的一种方式，我们既可以用它充当构造数据的模版，也应该能把它视为描述行为的接口。</p>
-<p>这样我们就可以将它作为静态的鸭子类型使用，同时承载了数据、行为以及约束的能力。</p>
-<p>假定我们将它称为 <code>class</code>：</p>
+</code></pre></div><h2 id="object-templates">Object templates</h2>
+<p>A type is a way for us to describe the data and behavior of an object, and we can use it both as a template for constructing data and should be able to think of it as an interface for describing behavior.</p>
+<p>This allows us to use it as a static duck type that carries data, behavior, and the ability to impose constraints at the same time.</p>
+<p>Suppose we call it a <code>class</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo := class {
     label := &#34;I am Label&#34;
     show := (-&gt;) {
         print(label)
     }
 }
-</code></pre></div><p>foo 同时包含了字段及函数，它们能被一致的使用。</p>
-<p>我们可以将唯一的关键字<code>class</code>去掉，替换为另一个经常用来表示模版的<code>$</code>。</p>
+</code></pre></div><p>foo contains both fields and functions, which can be used consistently.</p>
+<p>We can remove the unique keyword <code>class</code> and replace it with another <code>$</code>, which is often used for templates.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo := $ {
     label := &#34;I am Label&#34;
     show := (-&gt;) {
         print(label)
     }
 }
-</code></pre></div><p>然后 foo 就能被视为 type，我们可以一致地构建了。</p>
+</code></pre></div><p>Then foo can be treated as a type and we can build it consistently.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">a := foo{}
 a.show()
-</code></pre></div><p>基于鸭子类型的特性，我们可以定义一个 shower 的接口，去使用 foo 的行为。</p>
+</code></pre></div><p>Based on the properties of the duck type, we can define an interface to the shower to use the behavior of foo.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">shower := $ {
     show: (-&gt;)
 }
@@ -552,14 +538,14 @@ useShower := (s: shower-&gt;) {
 }
 
 useShower(a)
-</code></pre></div><p>因为 foo 具备了 show 方法，它就能被视为 shower 自然的使用。</p>
-<p>我们再引入一个语法，在对象模版内引入一个类型，就会自动隐含它所有的东西，这样很便利复用代码。</p>
-<p>例如 reader 包含 shower，就包含了它的 show：</p>
+</code></pre></div><p>Since foo has a show method, it can be used naturally as a shower.</p>
+<p>We introduce a syntax that automatically implies everything about a type within the object template, which makes it easy to reuse code.</p>
+<p>For example, if reader contains a shower, it contains its show.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">reader := $ {
     shower
     read: (-&gt;v: string)
 }
-</code></pre></div><p>那么我们也可以让 bar 包含 foo，就包含了 label 和 show 。</p>
+</code></pre></div><p>Then we can also make the bar contain foo, which would contain the label and show.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">bar := $ {
     foo
 
@@ -567,7 +553,7 @@ useShower(a)
         &lt;- label
     }
 }
-</code></pre></div><p>这时我们就能将 bar 视为 reader 使用了。</p>
+</code></pre></div><p>At this point we can use the bar as if it were a reader.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">useReader := (r: reader-&gt;) {
     r.show()
     print(r.read())
@@ -575,10 +561,10 @@ useShower(a)
 
 b := bar{}
 useReader(b)
-</code></pre></div><h2 id="最后">最后</h2>
-<p><a href="https://github.com/kulics-works/feel">欢迎 star https://github.com/kulics-works/feel</a></p>
-<p>Feel 语言目前还处于实验阶段，不具备生产条件，部分设计可能会随着 llvm 端的推进而改变，欢迎讨论邮件(<a href="mailto:kulics@outlook.com">kulics@outlook.com</a>)或issue讨论。</p>
-<p>再贴一段 leetcode#16 的代码供参考</p>
+</code></pre></div><h2 id="finally">Finally</h2>
+<p><a href="https://github.com/kulics-works/feel">Welcome star https://github.com/kulics-works/feel</a></p>
+<p>The Feel language is currently experimental and not production ready, and some designs may be released with the llvm side of the Changes due to push, discussion email (<a href="mailto:kulics@outlook.com">kulics@outlook.com</a>) or issue are welcome.</p>
+<p>Posting another snippet of leetcode #16 for reference</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">threeSumClosest := (nums: [list int], target: int-&gt;v: int) {
     length := nums.len
     nums.sort()
