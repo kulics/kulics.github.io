@@ -456,13 +456,23 @@ mut bar: int = 0
 } _ {
     ......
 }
+</code></pre></div><p>The use of <code>?</code> is not quite what we&rsquo;re used to, so we&rsquo;ve switched the position to look more natural.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo == 0 ? {
+    ......
+} foo == 1 ? {
+    ......
+} foo == 2 ? {
+    ......
+} _ {
+    ......
+}
 </code></pre></div><p>Now that we&rsquo;ve completed the basic form of the selection structure, we&rsquo;re compressing more code by forcing the specification.</p>
 <p>For <code>switch</code>, the biggest difference from <code>if</code> is that one is a match for a single value and the other is a match for a different value. So obviously we can add syntactic adaptations to what we have now, where <code>[]</code> is used to represent a match to a single target.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">? [foo] 0 {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[foo] 0 ? {
     ......
-} 1 {
+} 1 ? {
     ......
-} 2 {
+} 2 ? {
     ......
 } _ {
     ......
@@ -486,6 +496,10 @@ mut bar: int = 0
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ i := foo {
     ......
 }
+</code></pre></div><p>This use of <code>@</code> is not quite what we&rsquo;re used to, so we&rsquo;ve switched the position and left out the definition to make it look more natural.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo @ i {
+    ......
+}
 </code></pre></div><p>This gives us the basic shape of the circular structure.</p>
 <p>Let&rsquo;s go back to the traditional three-stage structure.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for (i := 0; i &lt; 10; i++) {
@@ -500,11 +514,11 @@ begin .. end
 begin ..&gt; end
 begin ... end
 </code></pre></div><p>Now we can use the interval operator for most of the trivial requirements.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ i := 0 ..&lt; 10 {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">0 ..&lt; 10 @ i {
     ......
 }
 </code></pre></div><p>Finally, passing in an expression directly will satisfy the While requirement.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ foo &lt; bar {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo &lt; bar @ {
     ......
 }
 </code></pre></div><h2 id="object-templates">Object templates</h2>
@@ -568,14 +582,14 @@ useReader(b)
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">threeSumClosest := (nums: [list int], target: int-&gt;v: int) {
     length := nums.len
     nums.sort()
-    !closs := nums[0]+nums[1]+nums[2]
-    @ i := 0 ..&lt; length {
+    !closs := nums[0] + nums[1] + nums[2]
+    0 ..&lt; length @ i {
         l, r := i+1, length-1
-        @ l &lt; r {
-            sum := nums[i]+nums[l]+nums[r]
-            ? abs(sum-target) &lt; abs(closs-target) {
+        l &lt; r @ {
+            sum := nums[i] + nums[l] + nums[r]
+            abs(sum-target) &lt; abs(closs-target) ? {
                 closs = sum
-            } sum &gt; target {
+            } sum &gt; target ? {
                 r -= 1
             } _ {
                 l += 1
