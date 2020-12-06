@@ -460,7 +460,7 @@ bar : int
 }
 </code></pre></div><p>Now that we&rsquo;ve completed the basic form of the selection structure, we&rsquo;re compressing more code by forcing the specification.</p>
 <h2 id="loop-structure">Loop structure</h2>
-<p><code>For</code> is the most common type of loop structure, and we continue to try to simplify it further.</p>
+<p><code>for</code> is the most common type of loop structure, and we continue to try to simplify it further.</p>
 <p>The simplest example is given first.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for (let i in foo) {
     ......
@@ -492,7 +492,7 @@ bar : int
         Print(label)
     }
 }
-</code></pre></div><p>Foo contains both fields and functions, which can be used consistently.</p>
+</code></pre></div><p><code>Foo</code> contains both fields and functions, which can be used consistently.</p>
 <p>Let&rsquo;s start by replacing the syntax with a uniform definition.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := class {
     label := &#34;I am Label&#34;
@@ -528,15 +528,15 @@ Use_Shower := (s : Shower-&gt;) {
 }
 
 Use_Shower( Foo$() )
-</code></pre></div><p>Since Foo has a Show method, it can be used naturally as a Shower.</p>
+</code></pre></div><p>Since <code>Foo</code> has a <code>Show</code> method, it can be used naturally as a <code>Shower</code>.</p>
 <p>We then introduce a syntax that introduces a delegate within the object template, which automatically implies everything about it according to the type it specifies, thus making it easy to reuse code.</p>
-<p>For example, if Reader contains a Shower, it contains its Show.</p>
+<p>For example, <code>Reader</code> contains a <code>Shower</code>, then <code>Reader</code> contains <code>Show</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Reader := $ {
     Shower
 
     Read : (-&gt;v : string)
 }
-</code></pre></div><p>Then we can also make the Bar contain Foo, which would contain the label and Show.</p>
+</code></pre></div><p>Then we can also make the <code>Bar</code> contain <code>Foo</code>, then <code>Bar</code> contain the <code>label</code> and <code>Show</code>.`</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Bar := $(foo := Foo$()) {
     foo
 
@@ -544,7 +544,7 @@ Use_Shower( Foo$() )
         &lt;- label
     }
 }
-</code></pre></div><p>At this point we can use the Bar as if it were a Reader.</p>
+</code></pre></div><p>At this point we can use the <code>Bar</code> as if it were a <code>Reader</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Use_Reader := (r : Reader-&gt;) {
     r.Show()
     Print(r.Read())
@@ -556,7 +556,7 @@ Use_Reader( Bar$() )
 <p><a href="https://github.com/kulics-works/feel">Welcome star https://github.com/kulics-works/feel</a></p>
 <p>The Feel language is currently experimental and not production ready, and some designs may be released with the llvm side of the Changes due to push, discussion email (<a href="mailto:kulics@outlook.com">kulics@outlook.com</a>) or issue are welcome.</p>
 <p>Posting another snippet of leetcode #16 for reference</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">threeSumClosest := (nums : List[Int], target : Int -&gt; v : Int) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ThreeSumClosest := (nums : List[Int], target : Int -&gt; v : Int) {
     length := nums.Size()
     nums.sort()
     closs := nums.(0) + nums.(1) + nums.(2)

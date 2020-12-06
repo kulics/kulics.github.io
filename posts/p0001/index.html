@@ -474,7 +474,7 @@ bar : int
 }
 </code></pre></div><p>现在我们完成了选择结构的基本形态，通过强制规范来压缩更多代码。</p>
 <h2 id="循环结构">循环结构</h2>
-<p><code>For</code> 是最常见的一种循环结构，我们继续尝试进一步简化。</p>
+<p><code>for</code> 是最常见的一种循环结构，我们继续尝试进一步简化。</p>
 <p>先给出最简单的例子：</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for (let i in foo) {
     ......
@@ -506,7 +506,7 @@ bar : int
         Print(label)
     }
 }
-</code></pre></div><p>Foo 同时包含了字段及函数，它们能被一致的使用。</p>
+</code></pre></div><p><code>Foo</code> 同时包含了字段及函数，它们能被一致的使用。</p>
 <p>我们先将语法替换为统一的定义方式。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := class {
     label := &#34;I am Label&#34;
@@ -542,15 +542,15 @@ Use_Shower := (s : Shower-&gt;) {
 }
 
 Use_Shower( Foo$() )
-</code></pre></div><p>因为 Foo 具备了 Show 方法，它就能被视为 Shower 使用。</p>
+</code></pre></div><p>因为 <code>Foo</code> 具备了 <code>Show</code> 方法，它就能被视为 <code>Shower</code> 使用。</p>
 <p>我们再引入一个语法，在对象模版内引入委托，委托会根据它指定的类型自动隐含它所有的东西，这样很便利复用代码。</p>
-<p>例如 Reader 包含 Shower，就包含了它的 Show。</p>
+<p>例如 <code>Reader</code> 包含 <code>Shower</code>，<code>Reader</code> 就包含了 <code>Show</code>。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Reader := $ {
     Shower
 
     Read : (-&gt;v : string)
 }
-</code></pre></div><p>那么我们也可以让 Bar 包含 Foo，就包含了 Label 和 Show 。</p>
+</code></pre></div><p>那么我们也可以让 <code>Bar</code> 包含 <code>Foo</code>，<code>Bar</code> 就包含了 <code>label</code> 和 <code>Show</code> 。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Bar := $(foo := Foo$()) {
     foo
 
@@ -558,7 +558,7 @@ Use_Shower( Foo$() )
         &lt;- label
     }
 }
-</code></pre></div><p>这时我们就能将 Bar 视为 Reader 使用了。</p>
+</code></pre></div><p>这时我们就能将 <code>Bar</code> 视为 <code>Reader</code> 使用了。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Use_Reader := (r : Reader-&gt;) {
     r.Show()
     Print(r.Read())
@@ -570,7 +570,7 @@ Use_Reader( Bar$() )
 <p><a href="https://github.com/kulics-works/feel">欢迎 star https://github.com/kulics-works/feel</a></p>
 <p>Feel 语言目前还处于实验阶段，不具备生产条件，部分设计可能会随着后端的推进而改变，欢迎讨论邮件(<a href="mailto:kulics@outlook.com">kulics@outlook.com</a>)或issue讨论。</p>
 <p>再贴一段 leetcode#16 的代码供参考</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">threeSumClosest := (nums : List[Int], target : Int -&gt; v : Int) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ThreeSumClosest := (nums : List[Int], target : Int -&gt; v : Int) {
     length := nums.Size()
     nums.sort()
     closs := nums.(0) + nums.(1) + nums.(2)
