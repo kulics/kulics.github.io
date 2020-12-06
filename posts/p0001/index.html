@@ -470,13 +470,23 @@ mut bar: int = 0
 } _ {
     ......
 }
+</code></pre></div><p>这样使用<code>?</code>的方式不太符合我们的习惯，所以我们调转一下位置，看起来更自然一些。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo == 0 ? {
+    ......
+} foo == 1 ? {
+    ......
+} foo == 2 ? {
+    ......
+} _ {
+    ......
+}
 </code></pre></div><p>现在我们完成了选择结构的基本形态，通过强制规范来压缩更多代码。</p>
 <p>对于 <code>switch</code>，与<code>if</code>最大的区别是一个是对单值的匹配，一个是不同值的匹配。所以很显然我们可以在现在的基础上增加语法适配，这里使用<code>[]</code>来表示对单个目标的匹配。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">? [foo] 0 {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[foo] 0 ? {
     ......
-} 1 {
+} 1 ? {
     ......
-} 2 {
+} 2 ? {
     ......
 } _ {
     ......
@@ -500,6 +510,10 @@ mut bar: int = 0
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ i := foo {
     ......
 }
+</code></pre></div><p>这样使用<code>@</code>不太符合我们的习惯，我们调换一下位置，并且省掉定义，看起来更自然一些。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo @ i {
+    ......
+}
 </code></pre></div><p>这样我们就得到了循环结构的基本形态。</p>
 <p>我们再来看看传统的三段式结构：</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for (i := 0; i &lt; 10; i++) {
@@ -514,11 +528,11 @@ begin .. end
 begin ..&gt; end
 begin ... end
 </code></pre></div><p>现在我们可以使用区间运算符来实现大部分三段式的需求。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ i := 0 ..&lt; 10 {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">0 ..&lt; 10 @ i {
     ......
 }
 </code></pre></div><p>最后直接传入一个表达式，就能满足While的需求。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ foo &lt; bar {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo &lt; bar @ {
     ......
 }
 </code></pre></div><h2 id="对象模版">对象模版</h2>
@@ -579,17 +593,17 @@ useReader(b)
 <p><a href="https://github.com/kulics-works/feel">欢迎 star https://github.com/kulics-works/feel</a></p>
 <p>Feel 语言目前还处于实验阶段，不具备生产条件，部分设计可能会随着 llvm 端的推进而改变，欢迎讨论邮件(<a href="mailto:kulics@outlook.com">kulics@outlook.com</a>)或issue讨论。</p>
 <p>再贴一段 leetcode#16 的代码供参考</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">threeSumClosest := (nums: [list int], target: int-&gt;v: int) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">threeSumClosest := (nums: list int, target: int-&gt;v: int) {
     length := nums.len
     nums.sort()
-    !closs := nums[0]+nums[1]+nums[2]
-    @ i := 0 ..&lt; length {
+    !closs := nums[0] + nums[1] + nums[2]
+    0 ..&lt; length @ i {
         l, r := i+1, length-1
-        @ l &lt; r {
-            sum := nums[i]+nums[l]+nums[r]
-            ? abs(sum-target) &lt; abs(closs-target) {
+        l &lt; r @ {
+            sum := nums[i] + nums[l] + nums[r]
+            abs(sum-target) &lt; abs(closs-target) ? {
                 closs = sum
-            } sum &gt; target {
+            } sum &gt; target ? {
                 r -= 1
             } _ {
                 l += 1
