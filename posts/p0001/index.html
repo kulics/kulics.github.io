@@ -10,7 +10,7 @@
     <meta name="keywords" content="blog,developer,personal">
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="打破常规，回归直觉—— Feel 语言设计"/>
+<meta name="twitter:title" content="打破常规，回归直觉—— Feel 语言的语法探索"/>
 <meta name="twitter:description" content="设计背景 几年前我在开发多平台的 XyKey 时，由于当时的跨平台方案还未成熟，所以我没有选择跨平台实现，而是选择了每个平台都使用官方指定的语言进行开发，为此我接触了 Java/Kotlin（Android）、Swift/OC（iOS）、C#（UWP）。于此同时我本职工作方向是区块链技术，现有主流区块链方案也大量使用了 JS &#43; Go 的组合开发前后端产品。
 在不同语言之间来回切换学习之后，我对不同语言表达同一种功能的语法差异性产生了兴趣，随后开始了语法设计方面的研究探索，最终诞生了 Feel 语言。
 语言设计问题之一 很多语言里面，函数存在不止一种表达方法。
@@ -20,7 +20,7 @@ Go: 大部分时候函数都使用 func 开头声明，算是一致性比较好�
 func eg1(x int) int { return 1 } var eg2 = func(x int) int { return 1 } type foo struct { eg3 func(int) int } type bar interface { eg4(int) int } C#: 大部分时候都使用了 C 式的描述方式，但在函数类型中使用了反直觉的泛型类型，并且 Lambda 语法也看不出与函数的联系。
 int eg1(int x) { Func&lt;int,int&gt; eg2 = (int x) =&gt; { return 1; }; return 1; } interface foo { int eg3(int x); } Action&lt;int&gt; eg4; Kotlin: 函数定义、函数类型、Lambda 是三种风格。"/>
 
-    <meta property="og:title" content="打破常规，回归直觉—— Feel 语言设计" />
+    <meta property="og:title" content="打破常规，回归直觉—— Feel 语言的语法探索" />
 <meta property="og:description" content="设计背景 几年前我在开发多平台的 XyKey 时，由于当时的跨平台方案还未成熟，所以我没有选择跨平台实现，而是选择了每个平台都使用官方指定的语言进行开发，为此我接触了 Java/Kotlin（Android）、Swift/OC（iOS）、C#（UWP）。于此同时我本职工作方向是区块链技术，现有主流区块链方案也大量使用了 JS &#43; Go 的组合开发前后端产品。
 在不同语言之间来回切换学习之后，我对不同语言表达同一种功能的语法差异性产生了兴趣，随后开始了语法设计方面的研究探索，最终诞生了 Feel 语言。
 语言设计问题之一 很多语言里面，函数存在不止一种表达方法。
@@ -39,7 +39,7 @@ int eg1(int x) { Func&lt;int,int&gt; eg2 = (int x) =&gt; { return 1; }; return 1
       <base href="https://kulics.github.io/posts/p0001/">
     
     <title>
-  打破常规，回归直觉—— Feel 语言设计 · kulics
+  打破常规，回归直觉—— Feel 语言的语法探索 · kulics
 </title>
 
     
@@ -109,7 +109,7 @@ int eg1(int x) { Func&lt;int,int&gt; eg2 = (int x) =&gt; { return 1; }; return 1
     <article>
       <header>
         <div class="post-title">
-          <h1 class="title">打破常规，回归直觉—— Feel 语言设计</h1>
+          <h1 class="title">打破常规，回归直觉—— Feel 语言的语法探索</h1>
         </div>
         <div class="post-meta">
           <div class="date">
@@ -350,45 +350,46 @@ printLabel(myObj);
 <ul>
 <li>函数也是值，定义函数的方式与定义函数变量的方式应该一致。</li>
 <li>函数定义里的类型，与函数的类型应该一致。</li>
-<li>Lambda表达式与函数定义应该具有明显的相似度。</li>
+<li>Lambda 表达式与函数定义应该具有明显的相似度。</li>
 </ul>
-<p>假设我们所有资源的定义方式都使用 <code>let id = XXX</code>的形式，并且统一使用 <code>type {}</code>的形式构建某种类型的值。</p>
+<p>假设我们所有资源的定义方式都使用 <code>let id : type = XXX</code> 的形式。</p>
 <p>那么我们可以先给出这样一个函数语法：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x: int) int {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x : int) int {
     return 1
 }
-</code></pre></div><p>这个语法非常普通，使用<code>func</code>关键字定义类型，<code>()</code>里声明形参，后面声明返回值。</p>
-<p>接下来我们思考一下现代函数设计通常允许多返回值，因此我们需要使用<code>()</code>包装更多返回值。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x: int, y: bool) (int, bool) {
+</code></pre></div><p>这个语法非常普通，使用 <code>func</code> 关键字定义类型，<code>()</code> 里声明形参，后面声明返回值。</p>
+<p>接下来我们思考一下现代函数设计通常允许多返回值，因此我们需要使用 <code>()</code> 包装更多返回值。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x : int, y : bool) (int, bool) {
     return (1, true)
 }
-</code></pre></div><p>这样形参和返回值类型的<code>()</code>太接近了，阅读起来比较费力，需要一个分隔符，我们可以引入<code>-&gt;</code>。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x: int, y: bool) -&gt; (int, bool) {
+</code></pre></div><p>这样形参和返回值类型的 <code>()</code> 太接近了，阅读起来比较费力，需要一个分隔符，我们可以引入<code>-&gt;</code>。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x : int, y : bool) -&gt; (int, bool) {
     return (1, true)
 }
-</code></pre></div><p>当<code>-&gt;</code>加入之后，<code>()-&gt;()</code>就可以构成一个函数的类型结构，此时<code>func</code>的存在就没有必要性了，所以我们去掉这个关键字。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x: int, y: bool) -&gt; (int, bool) {
+</code></pre></div><p>当 <code>-&gt;</code> 加入之后，<code>()-&gt;()</code> 就可以构成一个函数的类型结构，此时 <code>func</code> 的存在就没有必要性了，所以我们去掉这个关键字。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x : int, y : bool) -&gt; (int, bool) {
     return (1, true)
 }
-</code></pre></div><p>每次都要写两遍<code>()</code>也挺麻烦的，其实我们不太需要两个<code>()</code>，可以将形参和返回值类型放在一起，使用<code>-&gt;</code>分割。顺便也可以将 <code>return</code>的<code>()</code>也省略掉。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x: int, y: bool -&gt; int, bool) {
+</code></pre></div><p>每次都要写两遍 <code>()</code> 也挺麻烦的，其实我们不太需要两个 <code>()</code>，可以将形参和返回值类型放在一起，使用 <code>-&gt;</code> 分割。顺便也可以将 <code>return</code> 的 <code>()</code> 也省略掉。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x : int, y : bool -&gt; int, bool) {
     return 1, true
 }
-</code></pre></div><p>等等，我们还需要<code>return</code>这个关键字吗？我想应该是不需要了，我们可以使用更好看的<code>&lt;-</code>。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x: int, y: bool -&gt; int, bool) {
+</code></pre></div><p>等等，我们还需要 <code>return</code> 这个关键字吗？我想应该是不需要了，我们可以使用更好看的 <code>&lt;-</code>。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x : int, y : bool -&gt; int, bool) {
     &lt;- 1, true
 }
 </code></pre></div><p>函数左右好像有点不平衡，我们可以强制返回值类型也加上一样的名称描述，让它们看起来更一致，并且也能给使用者更友好的说明。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x: int, y: bool -&gt; a: int, b: bool) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x : int, y : bool -&gt; a : int, b : bool) {
     &lt;- 1, true
 }
-</code></pre></div><p>到这里我们的函数描述方式已经成型，使用<code>(-&gt;)</code>表达函数类型。 Lambda 语法也可以非常自然用<code>-&gt;</code>分割，使用<code>{}</code>定义整个函数的内容。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo: (int, bool -&gt; int, bool) = { x, y -&gt;
-    1, true
+</code></pre></div><p>到这里函数的描述方式已经成型，我们使用 <code>(-&gt;)</code> 表达函数类型，使用 <code>{}</code> 描述函数的逻辑。</p>
+<p>只要具备一定的类型推导能力，我们就可以继续省略参数类型和返回值类型，lambda 和函数声明都可以共用一种描述。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo : (int, bool -&gt; int, bool) = (x, y) {
+    &lt;- 1, true
 }
 </code></pre></div><p>无参函数与函数参数的例子：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (-&gt;) {}
-let bar = (fn: (-&gt;) -&gt; ) {}
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = () {}
+let bar = (fn : (-&gt;)) {}
 </code></pre></div><h2 id="定义">定义</h2>
 <p>我们对定义语法需求可以总结为如下几点：</p>
 <ul>
@@ -396,31 +397,31 @@ let bar = (fn: (-&gt;) -&gt; ) {}
 <li>名称比类型的阅读优先级更高，名称应该在前。</li>
 <li>区分可变与不可变。</li>
 </ul>
-<p>假设我们先使用 <code>let xxx = value</code> 定义不变量，使用 <code>var xxx = value</code> 定义变量。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo: int = 0
-var bar: int = 0
-</code></pre></div><p>使用<code>var</code>相当于多了一种定义声明的方式，不如使用<code>mut</code>来声明可变性，这样可能具备一致性。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo: int = 0
-let mut bar: int = 0
-</code></pre></div><p>我们思考一下，这种结构其实不需要<code>let</code>这个关键字也能成立，所以我们去掉它。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo: int = 0
-mut bar: int = 0
-</code></pre></div><p>现在只剩下<code>mut</code>这个关键字了，我们也去掉，使用<code>!</code>替换它，表示可变性、不确定性。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo: int = 0
-!bar: int = 0
-</code></pre></div><p>到这里，只要支持类型推导，我们也不需要明确写类型了，省略掉类型后，可以组合成<code>:=</code>。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo := 0
-!bar := 0
+<p>假设我们先使用 <code>let xxx : type = value</code> 定义不变量，使用 <code>var xxx : type = value</code> 定义变量。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo : int = 0
+var bar : int = 0
+</code></pre></div><p>使用 <code>var</code> 相当于多了一种定义声明的方式，不如使用 <code>mut</code> 来声明可变性，这样可能具备一致性。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo : int = 0
+let mut bar : int = 0
+</code></pre></div><p>我们思考一下，这种结构其实不需要 <code>let</code> 这个关键字也能成立，所以我们去掉它。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo : int = 0
+mut bar : int = 0
+</code></pre></div><p>现在只剩下 <code>mut</code> 这个关键字了，在很多规范里面，都建议使用大写描述常量，小写描述变量。我们干脆直接让它成为语法。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo : int = 0
+bar : int = 0
+</code></pre></div><p>到这里，只要支持类型推导，我们也不需要明确写类型了，省略掉类型后，可以组合成 <code>:=</code>。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := 0
+bar := 0
 </code></pre></div><p>当然，如果不一定带值，我们也可以省略右边，保留类型。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo: int
-!bar: int
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo : int
+bar : int
 </code></pre></div><p>现在我们的定义语法已经完成了，替换前面函数的例子，不需要换多少东西。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo := (x: int, y: bool -&gt; a: int, b: bool) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := (x : int, y : bool -&gt; a : int, b : bool) {
     &lt;- 1, true
 }
 </code></pre></div><h2 id="选择结构">选择结构</h2>
-<p>现有的选择结构一般包含if与switch两种，它们的形态和功能已经非常成熟了，但我们仍有从格式上进一步简化的可能性。</p>
-<p>我们先给出一个常见的 <code>if</code> 语句，并且假定 <code>{</code>不可以换行。</p>
+<p><code>if</code> 这种选择结构的形态和功能已经非常成熟了，但我们仍有从格式上进一步简化的可能性。</p>
+<p>我们先给出一个常见的 <code>if</code> 语句，并且假定 <code>{</code> 不可以换行。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if (foo == 0) {
     ......
 } else if (foo == 1) {
@@ -430,7 +431,7 @@ mut bar: int = 0
 } else {
     ......
 }
-</code></pre></div><p>去掉<code>()</code>似乎不会影响什么，我们先去掉它。</p>
+</code></pre></div><p>去掉 <code>()</code> 似乎不会影响什么，我们先去掉它。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if foo == 0 {
     ......
 } else if foo == 1 {
@@ -440,7 +441,7 @@ mut bar: int = 0
 } else {
     ......
 }
-</code></pre></div><p>我们假定 <code>else if</code>也不可以换行，必须跟在<code>}</code>后面。有了这个约束，我们就可以省略 <code>else if</code>。</p>
+</code></pre></div><p>我们假定 <code>else if</code> 也不可以换行，必须跟在 <code>}</code> 后面。有了这个约束，我们就可以省略 <code>else if</code>。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if foo == 0 {
     ......
 } foo == 1 {
@@ -450,162 +451,138 @@ mut bar: int = 0
 } else {
     ......
 }
-</code></pre></div><p>同样的道理，<code>else</code>其实也可以不需要，我们可以使用<code>_</code>来替换它。</p>
+</code></pre></div><p>同样的道理，<code>else</code> 其实也可以不需要，我们可以使用 <code>|</code> 来替换它。</p>
+<p>为了保持协调，我们在 <code>else if</code> 的位置也使用 <code>|</code>。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if foo == 0 {
     ......
-} foo == 1 {
+} | foo == 1 {
     ......
-} foo == 2 {
+} | foo == 2 {
     ......
-} _ {
+} | {
     ......
 }
-</code></pre></div><p>现在只剩下一个<code>if</code>了，我们用<code>?</code>来表示可选择性，替换掉它。</p>
+</code></pre></div><p>现在只剩下一个 <code>if</code> 了，我们用 <code>?</code> 来表示可选择性，替换掉它。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">? foo == 0 {
     ......
-} foo == 1 {
+} | foo == 1 {
     ......
-} foo == 2 {
+} | foo == 2 {
     ......
-} _ {
-    ......
-}
-</code></pre></div><p>这样使用<code>?</code>的方式不太符合我们的习惯，所以我们调转一下位置，看起来更自然一些。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo == 0 ? {
-    ......
-} foo == 1 ? {
-    ......
-} foo == 2 ? {
-    ......
-} _ {
+} | {
     ......
 }
 </code></pre></div><p>现在我们完成了选择结构的基本形态，通过强制规范来压缩更多代码。</p>
-<p>对于 <code>switch</code>，与<code>if</code>最大的区别是一个是对单值的匹配，一个是不同值的匹配。所以很显然我们可以在现在的基础上增加语法适配，这里使用<code>[]</code>来表示对单个目标的匹配。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[foo] 0 ? {
-    ......
-} 1 ? {
-    ......
-} 2 ? {
-    ......
-} _ {
-    ......
-}
-</code></pre></div><p>这样我们就得到了两种基础的选择结构。</p>
 <h2 id="循环结构">循环结构</h2>
-<p>现有的循环结构一般包含Foreach、 For三段式、While三种，我们一样可以从格式上进一步简化。</p>
+<p><code>For</code> 是最常见的一种循环结构，我们继续尝试进一步简化。</p>
 <p>先给出最简单的例子：</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for (let i in foo) {
     ......
 }
-</code></pre></div><p>省略掉作用不大的<code>()</code>。</p>
+</code></pre></div><p>省略掉作用不大的 <code>()</code>。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for let i in foo {
     ......
 }
-</code></pre></div><p><code>let</code>和<code>in</code>都是为了定义从集合里获取的对象，我们可以改成前面的定义语法。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for i := foo {
+</code></pre></div><p><code>let</code> 是为了定义从集合里获取的对象，我们可以改成前面的定义语法。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for i := in foo {
     ......
 }
-</code></pre></div><p>现在也只剩<code>for</code>这个关键字了，键盘上可用的符号也不多，我这里取了<code>@</code>替换掉它。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ i := foo {
+</code></pre></div><p>我们可以用另外一个语法 <code>...</code> 表示某个集合的展开，于是可以替换掉 <code>in</code>。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for i := foo... {
     ......
 }
-</code></pre></div><p>这样使用<code>@</code>不太符合我们的习惯，我们调换一下位置，并且省掉定义，看起来更自然一些。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo @ i {
+</code></pre></div><p>现在只剩 <code>for</code> 这个关键字了，<code>@</code> 非常适合用来指明选定的事物，我们替换掉它。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ i := foo... {
     ......
 }
 </code></pre></div><p>这样我们就得到了循环结构的基本形态。</p>
-<p>我们再来看看传统的三段式结构：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for (i := 0; i &lt; 10; i++) {
-		......
-}
-</code></pre></div><p>这种结构形式比较复杂，不少新语言都放弃了这种写法，而使用区间运算符代替，大部分形式为 <code>begin .. end</code> 。</p>
-<p>我们最常使用的区间包含<strong>递增左闭右开</strong>，<strong>递增全闭</strong>，<strong>递减左闭右开</strong>，<strong>递增全闭</strong>四种。</p>
-<p>因此只需要组合四种形式的区间运算符就足够我们使用了，以下按顺序给出。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">begin ..&lt; end
-begin .. end
-
-begin ..&gt; end
-begin ... end
-</code></pre></div><p>现在我们可以使用区间运算符来实现大部分三段式的需求。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">0 ..&lt; 10 @ i {
-    ......
-}
-</code></pre></div><p>最后直接传入一个表达式，就能满足While的需求。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo &lt; bar @ {
-    ......
-}
-</code></pre></div><h2 id="对象模版">对象模版</h2>
+<h2 id="对象模版">对象模版</h2>
 <p>类型是我们描述对象的数据和行为的一种方式，我们既可以用它充当构造数据的模版，也应该能把它视为描述行为的接口。</p>
 <p>这样我们就可以将它作为静态的鸭子类型使用，同时承载了数据、行为以及约束的能力。</p>
 <p>假定我们将它称为 <code>class</code>：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo := class {
-    label := &#34;I am Label&#34;
-    show := (-&gt;) {
-        print(label)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">class Foo {
+    var label = &#34;I am Label&#34;
+    let Show = func() {
+        Print(label)
     }
 }
-</code></pre></div><p>foo 同时包含了字段及函数，它们能被一致的使用。</p>
-<p>我们可以将唯一的关键字<code>class</code>去掉，替换为另一个经常用来表示模版的<code>$</code>。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo := $ {
+</code></pre></div><p>Foo 同时包含了字段及函数，它们能被一致的使用。</p>
+<p>我们先将语法替换为统一的定义方式。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := class {
     label := &#34;I am Label&#34;
-    show := (-&gt;) {
-        print(label)
+    Show := (-&gt;) {
+        Print(label)
     }
 }
-</code></pre></div><p>然后 foo 就能被视为 type，我们可以一致地构建了。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">a := foo{}
-a.show()
-</code></pre></div><p>基于鸭子类型的特性，我们可以定义一个 shower 的接口，去使用 foo 的行为。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">shower := $ {
-    show: (-&gt;)
+</code></pre></div><p>我们可以将唯一的关键字 <code>class</code> 去掉，替换为另一个经常用来表示模版的 <code>$</code>。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := $ {
+    label := &#34;I am Label&#34;
+    Show := (-&gt;) {
+        Print(label)
+    }
+}
+</code></pre></div><p>每个类型都需要通过某种方式构造数据对象，这个行为其实跟函数非常像。我们传入字段需要的值，就返回一个对象。因此我们不如将类型与函数联系起来，使用参数来构造字段。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := $(label := &#34;I am Label&#34;) {
+    Show := (-&gt;) {
+        Print(label)
+    }
+}
+</code></pre></div><p>这样我们就能在字段的位置复用函数的特性，比如命名参数、默认参数等。</p>
+<p>现在我们像函数那样构建对象了。为了一定的区分度，这里在调用处保留了 <code>$</code>。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">a := Foo$()
+a.Show()
+</code></pre></div><p>基于鸭子类型的特性，我们可以定义一个 <code>Shower</code> 的接口，去使用 <code>Foo</code> 的行为。</p>
+<p>一般接口是不具备构造函数的抽象类型，有了上面的语法，我们只要去掉 <code>()</code> 就可以描述接口。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Shower := $ {
+    Show : (-&gt;)
 }
 
-useShower := (s: shower-&gt;) {
-    s.show()
+Use_Shower := (s : Shower-&gt;) {
+    s.Show()
 }
 
-useShower(a)
-</code></pre></div><p>因为 foo 具备了 show 方法，它就能被视为 shower 自然的使用。</p>
-<p>我们再引入一个语法，在对象模版内引入一个类型，就会自动隐含它所有的东西，这样很便利复用代码。</p>
-<p>例如 reader 包含 shower，就包含了它的 show：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">reader := $ {
-    shower
-    read: (-&gt;v: string)
+Use_Shower( Foo$() )
+</code></pre></div><p>因为 Foo 具备了 Show 方法，它就能被视为 Shower 使用。</p>
+<p>我们再引入一个语法，在对象模版内引入委托，委托会根据它指定的类型自动隐含它所有的东西，这样很便利复用代码。</p>
+<p>例如 Reader 包含 Shower，就包含了它的 Show。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Reader := $ {
+    Shower
+
+    Read : (-&gt;v : string)
 }
-</code></pre></div><p>那么我们也可以让 bar 包含 foo，就包含了 label 和 show 。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">bar := $ {
+</code></pre></div><p>那么我们也可以让 Bar 包含 Foo，就包含了 Label 和 Show 。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Bar := $(foo := Foo$()) {
     foo
 
-    read := (-&gt;v: string) {
+    Read := (-&gt;v : string) {
         &lt;- label
     }
 }
-</code></pre></div><p>这时我们就能将 bar 视为 reader 使用了。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">useReader := (r: reader-&gt;) {
-    r.show()
-    print(r.read())
+</code></pre></div><p>这时我们就能将 Bar 视为 Reader 使用了。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Use_Reader := (r : Reader-&gt;) {
+    r.Show()
+    Print(r.Read())
 }
 
-b := bar{}
-useReader(b)
-</code></pre></div><h2 id="最后">最后</h2>
+Use_Reader( Bar$() )
+</code></pre></div><p>我们借助委托和鸭子类型，不依赖继承实现了部分面向对象的特性，在静态类型与动态类型之间选择了一个平衡点。</p>
+<h2 id="最后">最后</h2>
 <p><a href="https://github.com/kulics-works/feel">欢迎 star https://github.com/kulics-works/feel</a></p>
-<p>Feel 语言目前还处于实验阶段，不具备生产条件，部分设计可能会随着 llvm 端的推进而改变，欢迎讨论邮件(<a href="mailto:kulics@outlook.com">kulics@outlook.com</a>)或issue讨论。</p>
+<p>Feel 语言目前还处于实验阶段，不具备生产条件，部分设计可能会随着后端的推进而改变，欢迎讨论邮件(<a href="mailto:kulics@outlook.com">kulics@outlook.com</a>)或issue讨论。</p>
 <p>再贴一段 leetcode#16 的代码供参考</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">threeSumClosest := (nums: list int, target: int-&gt;v: int) {
-    length := nums.len
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">threeSumClosest := (nums : List[Int], target : Int -&gt; v : Int) {
+    length := nums.Size()
     nums.sort()
-    !closs := nums[0] + nums[1] + nums[2]
-    0 ..&lt; length @ i {
-        l, r := i+1, length-1
-        l &lt; r @ {
-            sum := nums[i] + nums[l] + nums[r]
-            abs(sum-target) &lt; abs(closs-target) ? {
+    closs := nums.(0) + nums.(1) + nums.(2)
+    @ i := 0.Up_until(length)... {
+        l, r := i + 1, length - 1
+        @ l &lt; r {
+            sum := nums.(i) + nums.(l) + nums.(r)
+            ? abs(sum - target) &lt; abs(closs - target) {
                 closs = sum
-            } sum &gt; target ? {
+            } | sum &gt; target {
                 r -= 1
-            } _ {
+            } | {
                 l += 1
             }
         }

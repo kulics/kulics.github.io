@@ -338,43 +338,44 @@ printLabel(myObj);
 <li>The type in a function definition should be the same as the type of the function.</li>
 <li>Lambda expressions should be remarkably similar to function definitions.</li>
 </ul>
-<p>Suppose that all our resources are defined using the form <code>let id = XXX</code>, and that values of some type are constructed uniformly using the form <code>type {}</code>.</p>
+<p>Suppose that all our resources are defined using the form <code>let id : type = XXX</code>.</p>
 <p>Then we can start by giving a function syntax like this.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x: int) int {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x : int) int {
     return 1
 }
 </code></pre></div><p>The syntax is very common, using the <code>func</code> keyword to define types, a formal parameter in <code>()</code>, and a return value after that.</p>
 <p>Next we consider that modern function designs often allow multiple return values, so we need to use <code>()</code> to wrap more return values.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x: int, y: bool) (int, bool) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x : int, y : bool) (int, bool) {
     return (1, true)
 }
 </code></pre></div><p>This is too close to <code>()</code> of the form parameter and return value type, which is difficult to read and requires a separator, so we can introduce <code>-&gt;</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x: int, y: bool) -&gt; (int, bool) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x : int, y : bool) -&gt; (int, bool) {
     return (1, true)
 }
 </code></pre></div><p>When <code>-&gt;</code> is added, <code>()-&gt;()</code> can form the type structure of a function, at which point the existence of <code>func</code> is not necessary, so we remove the keyword.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x: int, y: bool) -&gt; (int, bool) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x : int, y : bool) -&gt; (int, bool) {
     return (1, true)
 }
 </code></pre></div><p>Writing <code>()</code> twice every time is a bit of a pain, but we don&rsquo;t really need two <code>()</code>s. We can combine the formal parameter and return type put them together and split them using <code>-&gt;</code>. By the way, you can also omit the <code>()</code> of <code>return</code> as well.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x: int, y: bool -&gt; int, bool) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x : int, y : bool -&gt; int, bool) {
     return 1, true
 }
 </code></pre></div><p>Wait, do we still need the <code>return</code> keyword? I don&rsquo;t think it&rsquo;s needed, we could use a better looking <code>&lt;-</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x: int, y: bool -&gt; int, bool) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x : int, y : bool -&gt; int, bool) {
     &lt;- 1, true
 }
 </code></pre></div><p>The left and right functions seem a bit unbalanced, we can force the return value types to have the same name description to make them look more consistent. and can also give more user-friendly instructions.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x: int, y: bool -&gt; a: int, b: bool) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x : int, y : bool -&gt; a : int, b : bool) {
     &lt;- 1, true
 }
-</code></pre></div><p>Here we have our function descriptions in place, using <code>(-&gt;)</code> to express function types. The Lambda syntax can also be split quite naturally with <code>-&gt;</code>, using <code>{}</code> to define the contents of the entire function.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo: (int, bool -&gt; int, bool) = { x, y -&gt;
-    1, true
+</code></pre></div><p>Here the function description has been shaped, we use <code>(-&gt;)</code> for the function type and <code>{}</code> for the function logic.</p>
+<p>As long as we have some type derivation skills, we can continue to omit argument and return types, and both lambda and function declarations can share a common description.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo : (int, bool -&gt; int, bool) = (x, y) {
+    &lt;- 1, true
 }
 </code></pre></div><p>Example of an unparallel function with function parameters.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (-&gt;) {}
-let bar = (fn: (-&gt;) -&gt; ) {}
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = () {}
+let bar = (fn : (-&gt;)) {}
 </code></pre></div><h2 id="definitions">Definitions</h2>
 <p>Our need for a definition grammar can be summarized as follows.</p>
 <ul>
@@ -382,30 +383,30 @@ let bar = (fn: (-&gt;) -&gt; ) {}
 <li>Names have a higher reading priority than types and should be preceded by the name.</li>
 <li>Distinguish between variable and immutable.</li>
 </ul>
-<p>Suppose we start by defining immutable with <code>let xxx = value</code> and define variable with <code>var xxx = value</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo: int = 0
-var bar: int = 0
+<p>Suppose we start by defining immutable with <code>let xxx : type = value</code> and define variable with <code>var xxx : type = value</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo : int = 0
+var bar : int = 0
 </code></pre></div><p>Using <code>var</code> is equivalent to one more way of defining declarations, rather than using <code>mut</code> to declare variability, which may have consistency.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo: int = 0
-let mut bar: int = 0
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo : int = 0
+let mut bar : int = 0
 </code></pre></div><p>Let&rsquo;s think about the fact that this structure actually holds without the <code>let</code> keyword, so we remove it.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo: int = 0
-mut bar: int = 0
-</code></pre></div><p>Now we are left with the keyword <code>mut</code>, which we also remove and replace it with <code>!</code> instead of it, to denote variability, uncertainty.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo: int = 0
-!bar: int = 0
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo : int = 0
+mut bar : int = 0
+</code></pre></div><p>Now we are left with the keyword <code>mut</code>, which in many specifications is recommended to describe constants in upper case and variables in lower case. Let&rsquo;s just let it be the syntax.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo : int = 0
+bar : int = 0
 </code></pre></div><p>By this point, we don&rsquo;t need to explicitly write the type either, as long as type derivation is supported, and omitting the type allows us to combine it into <code>:=</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo := 0
-!bar := 0
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := 0
+bar := 0
 </code></pre></div><p>Of course, if it doesn&rsquo;t necessarily carry a value, we can also omit the right side and keep the type.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo: int
-!bar: int
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo : int
+bar : int
 </code></pre></div><p>Now that our definition syntax is complete, replacing the example of the previous function doesn&rsquo;t require changing much of anything.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo := (x: int, y: bool -&gt; a: int, b: bool) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := (x : int, y : bool -&gt; a : int, b : bool) {
     &lt;- 1, true
 }
 </code></pre></div><h2 id="select-structure">Select structure</h2>
-<p>Existing selection constructs, which generally include both if and switch, are very mature in form and function, but there is potential for further format simplification.</p>
+<p>The form and functionality of the <code>if</code> selection structure is very mature, but there are possibilities for further simplification of the format.</p>
 <p>Let&rsquo;s start with a common <code>if</code> statement, and assume that <code>{</code> is not line feedable.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if (foo == 0) {
     ......
@@ -436,50 +437,30 @@ mut bar: int = 0
 } else {
     ......
 }
-</code></pre></div><p>By the same token, <code>else</code> is not really needed; we can replace it with <code>_</code>.</p>
+</code></pre></div><p>By the same token, <code>else</code> is not really needed; we can replace it with <code>|</code>.</p>
+<p>For consistency, we also use <code>|</code> in the <code>else if</code> position.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if foo == 0 {
     ......
-} foo == 1 {
+} | foo == 1 {
     ......
-} foo == 2 {
+} | foo == 2 {
     ......
-} _ {
+} | {
     ......
 }
 </code></pre></div><p>Now there is only one <code>if</code> left, we replace it with <code>?</code> for selectivity, replacing it with <code>?</code></p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">? foo == 0 {
     ......
-} foo == 1 {
+} | foo == 1 {
     ......
-} foo == 2 {
+} | foo == 2 {
     ......
-} _ {
-    ......
-}
-</code></pre></div><p>The use of <code>?</code> is not quite what we&rsquo;re used to, so we&rsquo;ve switched the position to look more natural.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo == 0 ? {
-    ......
-} foo == 1 ? {
-    ......
-} foo == 2 ? {
-    ......
-} _ {
+} | {
     ......
 }
 </code></pre></div><p>Now that we&rsquo;ve completed the basic form of the selection structure, we&rsquo;re compressing more code by forcing the specification.</p>
-<p>For <code>switch</code>, the biggest difference from <code>if</code> is that one is a match for a single value and the other is a match for a different value. So obviously we can add syntactic adaptations to what we have now, where <code>[]</code> is used to represent a match to a single target.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[foo] 0 ? {
-    ......
-} 1 ? {
-    ......
-} 2 ? {
-    ......
-} _ {
-    ......
-}
-</code></pre></div><p>This gives us two basic select structures.</p>
 <h2 id="loop-structure">Loop structure</h2>
-<p>Existing loop structures generally contain Foreach, For triplet, and While, but we can also simplify them further in terms of format.</p>
+<p><code>For</code> is the most common type of loop structure, and we continue to try to simplify it further.</p>
 <p>The simplest example is given first.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for (let i in foo) {
     ......
@@ -488,110 +469,106 @@ mut bar: int = 0
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for let i in foo {
     ......
 }
-</code></pre></div><p>Both <code>let</code> and <code>in</code> are used to define the object to be retrieved from the set, and we can change the definition syntax to the previous one.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for i := foo {
+</code></pre></div><p><code>let</code> is used to define the object to be retrieved from the set, and we can change the definition syntax to the previous one.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for i := in foo {
     ......
 }
-</code></pre></div><p>Now there&rsquo;s only <code>for</code> left, and there aren&rsquo;t many symbols available on the keyboard, so I&rsquo;ve replaced it with <code>@</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ i := foo {
+</code></pre></div><p>We can replace <code>in</code> with another syntax, <code>... </code> to represent the expansion of a set, so we can replace <code>in</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for i := foo... {
     ......
 }
-</code></pre></div><p>This use of <code>@</code> is not quite what we&rsquo;re used to, so we&rsquo;ve switched the position and left out the definition to make it look more natural.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo @ i {
+</code></pre></div><p>Now there is only the <code>for</code> keyword left, and <code>@</code> is perfect for specifying the selected thing, which we replace.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ i := foo... {
     ......
 }
 </code></pre></div><p>This gives us the basic shape of the circular structure.</p>
-<p>Let&rsquo;s go back to the traditional three-stage structure.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for (i := 0; i &lt; 10; i++) {
-		......
-}
-</code></pre></div><p>This structural form is complex, and many new languages have abandoned it in favor of interval operators, mostly of the form <code>begin ... end</code>.</p>
-<p>The most commonly used intervals are <strong>increasingly left-closed-right-open</strong>, <strong>increasingly all-closed</strong>, <strong>decreasingly left-closed-right-open</strong>, and <strong>increasingly all-closed</strong>.</p>
-<p>So it is sufficient to combine only four forms of interval operators, which are given below in the order in which they are used.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">begin ..&lt; end
-begin .. end
-
-begin ..&gt; end
-begin ... end
-</code></pre></div><p>Now we can use the interval operator for most of the trivial requirements.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">0 ..&lt; 10 @ i {
-    ......
-}
-</code></pre></div><p>Finally, passing in an expression directly will satisfy the While requirement.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo &lt; bar @ {
-    ......
-}
-</code></pre></div><h2 id="object-templates">Object templates</h2>
+<h2 id="object-templates">Object templates</h2>
 <p>A type is a way for us to describe the data and behavior of an object, and we can use it both as a template for constructing data and should be able to think of it as an interface for describing behavior.</p>
 <p>This allows us to use it as a static duck type that carries data, behavior, and the ability to impose constraints at the same time.</p>
 <p>Suppose we call it a <code>class</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo := class {
-    label := &#34;I am Label&#34;
-    show := (-&gt;) {
-        print(label)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">class Foo {
+    var label = &#34;I am Label&#34;
+    let Show = func() {
+        Print(label)
     }
 }
-</code></pre></div><p>foo contains both fields and functions, which can be used consistently.</p>
-<p>We can remove the unique keyword <code>class</code> and replace it with another <code>$</code>, which is often used for templates.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo := $ {
+</code></pre></div><p>Foo contains both fields and functions, which can be used consistently.</p>
+<p>Let&rsquo;s start by replacing the syntax with a uniform definition.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := class {
     label := &#34;I am Label&#34;
-    show := (-&gt;) {
-        print(label)
+    Show := (-&gt;) {
+        Print(label)
     }
 }
-</code></pre></div><p>Then foo can be treated as a type and we can build it consistently.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">a := foo{}
-a.show()
-</code></pre></div><p>Based on the properties of the duck type, we can define an interface to the shower to use the behavior of foo.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">shower := $ {
-    show: (-&gt;)
+</code></pre></div><p>We can remove the unique keyword <code>class</code> and replace it with another <code>$</code>, which is often used for templates.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := $ {
+    label := &#34;I am Label&#34;
+    Show := (-&gt;) {
+        Print(label)
+    }
+}
+</code></pre></div><p>Every type needs to construct data objects in some way, and this behavior is actually very similar to functions. We pass the value needed for the field, and an object is returned. So why don&rsquo;t we associate types with functions and use arguments to construct the fields.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := $(label := &#34;I am Label&#34;) {
+    Show := (-&gt;) {
+        Print(label)
+    }
+}
+</code></pre></div><p>This allows us to reuse the function&rsquo;s properties, such as named parameters, default parameters, etc., at the location of the field.</p>
+<p>Now we build the object as a function. For some degree of distinction, <code>$</code> has been left in the call here.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">a := Foo$()
+a.Show()
+</code></pre></div><p>Based on the properties of the duck type, we can define an interface to the <code>Shower</code> to use the behavior of <code>Foo</code>.</p>
+<p>With the above syntax, we can describe an interface by simply dropping <code>()</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Shower := $ {
+    Show : (-&gt;)
 }
 
-useShower := (s: shower-&gt;) {
-    s.show()
+Use_Shower := (s : Shower-&gt;) {
+    s.Show()
 }
 
-useShower(a)
-</code></pre></div><p>Since foo has a show method, it can be used naturally as a shower.</p>
-<p>We introduce a syntax that automatically implies everything about a type within the object template, which makes it easy to reuse code.</p>
-<p>For example, if reader contains a shower, it contains its show.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">reader := $ {
-    shower
-    read: (-&gt;v: string)
+Use_Shower( Foo$() )
+</code></pre></div><p>Since Foo has a Show method, it can be used naturally as a Shower.</p>
+<p>We then introduce a syntax that introduces a delegate within the object template, which automatically implies everything about it according to the type it specifies, thus making it easy to reuse code.</p>
+<p>For example, if Reader contains a Shower, it contains its Show.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Reader := $ {
+    Shower
+
+    Read : (-&gt;v : string)
 }
-</code></pre></div><p>Then we can also make the bar contain foo, which would contain the label and show.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">bar := $ {
+</code></pre></div><p>Then we can also make the Bar contain Foo, which would contain the label and Show.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Bar := $(foo := Foo$()) {
     foo
 
-    read := (-&gt;v: string) {
+    Read := (-&gt;v : string) {
         &lt;- label
     }
 }
-</code></pre></div><p>At this point we can use the bar as if it were a reader.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">useReader := (r: reader-&gt;) {
-    r.show()
-    print(r.read())
+</code></pre></div><p>At this point we can use the Bar as if it were a Reader.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Use_Reader := (r : Reader-&gt;) {
+    r.Show()
+    Print(r.Read())
 }
 
-b := bar{}
-useReader(b)
-</code></pre></div><h2 id="finally">Finally</h2>
+Use_Reader( Bar$() )
+</code></pre></div><p>We implement some of the object-oriented features with the help of delegate and duck types, without relying on inheritance, choosing a balance between static and dynamic types.</p>
+<h2 id="finally">Finally</h2>
 <p><a href="https://github.com/kulics-works/feel">Welcome star https://github.com/kulics-works/feel</a></p>
 <p>The Feel language is currently experimental and not production ready, and some designs may be released with the llvm side of the Changes due to push, discussion email (<a href="mailto:kulics@outlook.com">kulics@outlook.com</a>) or issue are welcome.</p>
 <p>Posting another snippet of leetcode #16 for reference</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">threeSumClosest := (nums: list int, target: int-&gt;v: int) {
-    length := nums.len
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">threeSumClosest := (nums : List[Int], target : Int -&gt; v : Int) {
+    length := nums.Size()
     nums.sort()
-    !closs := nums[0] + nums[1] + nums[2]
-    0 ..&lt; length @ i {
-        l, r := i+1, length-1
-        l &lt; r @ {
-            sum := nums[i] + nums[l] + nums[r]
-            abs(sum-target) &lt; abs(closs-target) ? {
+    closs := nums.(0) + nums.(1) + nums.(2)
+    @ i := 0.Up_until(length)... {
+        l, r := i + 1, length - 1
+        @ l &lt; r {
+            sum := nums.(i) + nums.(l) + nums.(r)
+            ? abs(sum - target) &lt; abs(closs - target) {
                 closs = sum
-            } sum &gt; target ? {
+            } | sum &gt; target {
                 r -= 1
-            } _ {
+            } | {
                 l += 1
             }
         }
