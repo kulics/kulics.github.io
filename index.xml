@@ -6,10 +6,24 @@
     <description>Recent content on kulics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 18 Jul 2020 20:24:28 +0800</lastBuildDate>
-    
-	<atom:link href="https://kulics.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 17 Mar 2022 14:23:22 +0800</lastBuildDate><atom:link href="https://kulics.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基于 go 泛型实现集合库之迭代器</title>
+      <link>https://kulics.github.io/posts/p0003/</link>
+      <pubDate>Thu, 17 Mar 2022 14:23:22 +0800</pubDate>
+      
+      <guid>https://kulics.github.io/posts/p0003/</guid>
+      <description>基于 go 泛型实现迭代器 迭代器模式 迭代器模式（Iterator Pattern）是一种非常常用得设计模式。这种模式在 Java、C#、Rust 等语言中都有大量应用，这种模式可以以一种相同的方式，顺序访问集合类型中的元素，而无需关注集合类型实现方式。
+应用迭代器模式，我们就可以对无论是 数组、链表或是树形式实现的集合类型统一遍历，甚至组合更多高级函数功能使用，提升代码的表达能力。
+go 在之前没有泛型的时候，很难以类型安全的方式抽象迭代器模式出来，只能靠内置的 for range 来对 slice、map 类型遍历，我们很难扩展其它的自定义类型支持遍历。
+现在有了泛型也就有了这个能力来让我们自己实现通用的遍历方式。
+下面来让我们看看如何在 go 中实现这样的迭代器。
+Iterator 关于 go 的泛型语法不是本篇文章的重点，就不再赘述，我们直接从 Iterator 的定义开始。
+要让一个类型支持遍历很简单，熟悉 go 的同学们可能过去或多或少都用过类似的技巧。
+让我们先从简单的 ForEach 函数开始，假设我们有一个使用 slice 实现的 List 类型，那么我们只需要利用 go 的函数一等公民特性，就能让外部来遍历这个类型。
+我们让 ForEach 传入一个函数类型的参数，来让调用者可以通过外部函数的方式来遍历 List 里面的元素。
+type MyList[T any] struct {  elements []T }  func (a MyList[T]) ForEach(f func(T)) {  for _, v := range a.elements {  f(v) // 交由调用者来定义遍历的动作  } }  func main() { 	var list = MyList[int]{[]int{1, 2, 3, 4, 5}} 	list.</description>
+    </item>
     
     <item>
       <title>Out of the box, back to intuition - Feel Lang Design</title>
@@ -21,7 +35,7 @@
     </item>
     
     <item>
-      <title>打破常规，回归直觉—— Feel 语言设计</title>
+      <title>打破常规，回归直觉—— Feel 语言的语法探索</title>
       <link>https://kulics.github.io/posts/p0001/</link>
       <pubDate>Mon, 13 Jul 2020 14:23:22 +0800</pubDate>
       
@@ -32,8 +46,7 @@
 我们需要为同样的需求设计不同的语法吗？
 以下我举一些我使用过的语言中函数的表示方法，所有的 eg 都是函数。
 Go: 大部分时候函数都使用 func 开头声明，算是一致性比较好的设计之一，但在 interface 中还是使用了不一样的描述方式。
-func eg1(x int) int { return 1 } var eg2 = func(x int) int { return 1 } type foo struct { eg3 func(int) int } type bar interface { eg4(int) int } C#: 大部分时候都使用了 C 式的描述方式，但在函数类型中使用了反直觉的泛型类型，并且 Lambda 语法也看不出与函数的联系。
-int eg1(int x) { Func&amp;lt;int,int&amp;gt; eg2 = (int x) =&amp;gt; { return 1; }; return 1; } interface foo { int eg3(int x); } Action&amp;lt;int&amp;gt; eg4; Kotlin: 函数定义、函数类型、Lambda 是三种风格。</description>
+func eg1(x int) int { 	return 1 }  var eg2 = func(x int) int { 	return 1 }  type foo struct { 	eg3 func(int) int }  type bar interface { 	eg4(int) int } C#: 大部分时候都使用了 C 式的描述方式，但在函数类型中使用了反直觉的泛型类型，并且 Lambda 语法也看不出与函数的联系。</description>
     </item>
     
   </channel>
