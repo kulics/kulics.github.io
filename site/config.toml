@@ -12,7 +12,7 @@ pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 enableEmoji = true
 
-disqusShortname = "yourdiscussshortname"
+disqusShortname = "kulics"
 
 [params]
     author = "Kulics"
@@ -34,10 +34,12 @@ disqusShortname = "yourdiscussshortname"
 
     rtl = false
 
-    math = true
     maxSeeAlsoItems = 5
+
     colorScheme = "auto"
-    custom_css = ["css/custom.css"]
+    #customCSS = ["css/custom.css"]
+    #customSCSS = ["scss/custom.scss"]
+    #customJS = ["js/custom.js"]
 
 # Social links
 [[params.social]]
