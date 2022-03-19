@@ -6,14 +6,14 @@
     <description>Recent content in Posts on kulics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 17 Mar 2022 14:23:22 +0800</lastBuildDate><atom:link href="https://kulics.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 19 Mar 2022 18:30:52 +0800</lastBuildDate><atom:link href="https://kulics.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>基于 go 泛型实现集合库之迭代器</title>
       <link>https://kulics.github.io/posts/p0003/</link>
-      <pubDate>Thu, 17 Mar 2022 14:23:22 +0800</pubDate>
+      <pubDate>Sat, 19 Mar 2022 18:30:52 +0800</pubDate>
       
       <guid>https://kulics.github.io/posts/p0003/</guid>
-      <description>基于 go 泛型实现迭代器 迭代器模式 迭代器模式（Iterator Pattern）是一种非常常用得设计模式。这种模式在 Java、C#、Rust 等语言中都有大量应用，这种模式可以以一种相同的方式，顺序访问集合类型中的元素，而无需关注集合类型实现方式。
+      <description>迭代器模式 迭代器模式（Iterator Pattern）是一种非常常用得设计模式。这种模式在 Java、C#、Rust 等语言中都有大量应用，这种模式可以以一种相同的方式，顺序访问集合类型中的元素，而无需关注集合类型实现方式。
 应用迭代器模式，我们就可以对无论是 数组、链表或是树形式实现的集合类型统一遍历，甚至组合更多高级函数功能使用，提升代码的表达能力。
 go 在之前没有泛型的时候，很难以类型安全的方式抽象迭代器模式出来，只能靠内置的 for range 来对 slice、map 类型遍历，我们很难扩展其它的自定义类型支持遍历。
 现在有了泛型也就有了这个能力来让我们自己实现通用的遍历方式。
