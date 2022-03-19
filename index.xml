@@ -13,12 +13,12 @@
       <pubDate>Sat, 19 Mar 2022 18:30:52 +0800</pubDate>
       
       <guid>https://kulics.github.io/posts/p0003/</guid>
-      <description>迭代器模式 迭代器模式（Iterator Pattern）是一种非常常用得设计模式。这种模式在 Java、C#、Rust 等语言中都有大量应用，这种模式可以以一种相同的方式，顺序访问集合类型中的元素，而无需关注集合类型实现方式。
+      <description>迭代器模式迭代器模式（Iterator Pattern）是一种非常常用得设计模式。这种模式在 Java、C#、Rust 等语言中都有大量应用，这种模式可以以一种相同的方式，顺序访问集合类型中的元素，而无需关注集合类型实现方式。
 应用迭代器模式，我们就可以对无论是 数组、链表或是树形式实现的集合类型统一遍历，甚至组合更多高级函数功能使用，提升代码的表达能力。
 go 在之前没有泛型的时候，很难以类型安全的方式抽象迭代器模式出来，只能靠内置的 for range 来对 slice、map 类型遍历，我们很难扩展其它的自定义类型支持遍历。
 现在有了泛型也就有了这个能力来让我们自己实现通用的遍历方式。
 下面来让我们看看如何在 go 中实现这样的迭代器。
-Iterator 关于 go 的泛型语法不是本篇文章的重点，就不再赘述，我们直接从 Iterator 的定义开始。
+Iterator关于 go 的泛型语法不是本篇文章的重点，就不再赘述，我们直接从 Iterator 的定义开始。
 要让一个类型支持遍历很简单，熟悉 go 的同学们可能过去或多或少都用过类似的技巧。
 让我们先从简单的 ForEach 函数开始，假设我们有一个使用 slice 实现的 List 类型，那么我们只需要利用 go 的函数一等公民特性，就能让外部来遍历这个类型。
 我们让 ForEach 传入一个函数类型的参数，来让调用者可以通过外部函数的方式来遍历 List 里面的元素。
@@ -31,7 +31,7 @@ type MyList[T any] struct {  elements []T }  func (a MyList[T]) ForEach(f func(T
       <pubDate>Sat, 18 Jul 2020 20:24:28 +0800</pubDate>
       
       <guid>https://kulics.github.io/posts/p0002/</guid>
-      <description>Design background When I was developing a multi-platform XyKey a few years ago, I didn&amp;rsquo;t have the option because the cross-platform solution wasn&amp;rsquo;t mature enough at the time Instead of a cross-platform implementation, I chose to develop for each platform using the official language, for which I approached Java/ Kotlin (Android), Swift/OC (iOS), C# (UWP). I also work on blockchain technology, and the existing mainstream blockchain solutions also make extensive use of JS + Go&amp;rsquo;s Combining front and back-end product development.</description>
+      <description>Design backgroundWhen I was developing a multi-platform XyKey a few years ago, I didn&amp;rsquo;t have the option because the cross-platform solution wasn&amp;rsquo;t mature enough at the time Instead of a cross-platform implementation, I chose to develop for each platform using the official language, for which I approached Java/ Kotlin (Android), Swift/OC (iOS), C# (UWP). I also work on blockchain technology, and the existing mainstream blockchain solutions also make extensive use of JS + Go&amp;rsquo;s Combining front and back-end product development.</description>
     </item>
     
     <item>
@@ -40,9 +40,9 @@ type MyList[T any] struct {  elements []T }  func (a MyList[T]) ForEach(f func(T
       <pubDate>Mon, 13 Jul 2020 14:23:22 +0800</pubDate>
       
       <guid>https://kulics.github.io/posts/p0001/</guid>
-      <description>设计背景 几年前我在开发多平台的 XyKey 时，由于当时的跨平台方案还未成熟，所以我没有选择跨平台实现，而是选择了每个平台都使用官方指定的语言进行开发，为此我接触了 Java/Kotlin（Android）、Swift/OC（iOS）、C#（UWP）。于此同时我本职工作方向是区块链技术，现有主流区块链方案也大量使用了 JS + Go 的组合开发前后端产品。
+      <description>设计背景几年前我在开发多平台的 XyKey 时，由于当时的跨平台方案还未成熟，所以我没有选择跨平台实现，而是选择了每个平台都使用官方指定的语言进行开发，为此我接触了 Java/Kotlin（Android）、Swift/OC（iOS）、C#（UWP）。于此同时我本职工作方向是区块链技术，现有主流区块链方案也大量使用了 JS + Go 的组合开发前后端产品。
 在不同语言之间来回切换学习之后，我对不同语言表达同一种功能的语法差异性产生了兴趣，随后开始了语法设计方面的研究探索，最终诞生了 Feel 语言。
-语言设计问题之一 很多语言里面，函数存在不止一种表达方法。
+语言设计问题之一很多语言里面，函数存在不止一种表达方法。
 我们需要为同样的需求设计不同的语法吗？
 以下我举一些我使用过的语言中函数的表示方法，所有的 eg 都是函数。
 Go: 大部分时候函数都使用 func 开头声明，算是一致性比较好的设计之一，但在 interface 中还是使用了不一样的描述方式。

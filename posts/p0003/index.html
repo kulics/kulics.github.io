@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Kulics">
+    <meta name="description" content="迭代器模式迭代器模式（Iterator Pattern）是一种非常常用得设计模式。这种模式在 Java、C#、Rust 等语言中都有大量应用，这种模式可以以一种相同的方式，顺序访问集合类型中的元素，而无需关注集合类型实现方式。
+应用迭代器模式，我们就可以对无论是 数组、链表或是树形式实现的集合类型统一遍历，甚至组合更多高级函数功能使用，提升代码的表达能力。
+go 在之前没有泛型的时候，很难以类型安全的方式抽象迭代器模式出来，只能靠内置的 for range 来对 slice、map 类型遍历，我们很难扩展其它的自定义类型支持遍历。
+现在有了泛型也就有了这个能力来让我们自己实现通用的遍历方式。
+下面来让我们看看如何在 go 中实现这样的迭代器。
+Iterator关于 go 的泛型语法不是本篇文章的重点，就不再赘述，我们直接从 Iterator 的定义开始。
+要让一个类型支持遍历很简单，熟悉 go 的同学们可能过去或多或少都用过类似的技巧。
+让我们先从简单的 ForEach 函数开始，假设我们有一个使用 slice 实现的 List 类型，那么我们只需要利用 go 的函数一等公民特性，就能让外部来遍历这个类型。
+我们让 ForEach 传入一个函数类型的参数，来让调用者可以通过外部函数的方式来遍历 List 里面的元素。
+type MyList[T any] struct {  elements []T }  func (a MyList[T]) ForEach(f func(T)) {  for _, v := range a.elements {  f(v) // 交由调用者来定义遍历的动作  } }  func main() { 	var list = MyList[int]{[]int{1, 2, 3, 4, 5}} 	list.">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="基于 go 泛型实现集合库之迭代器"/>
+<meta name="twitter:description" content="迭代器模式迭代器模式（Iterator Pattern）是一种非常常用得设计模式。这种模式在 Java、C#、Rust 等语言中都有大量应用，这种模式可以以一种相同的方式，顺序访问集合类型中的元素，而无需关注集合类型实现方式。
+应用迭代器模式，我们就可以对无论是 数组、链表或是树形式实现的集合类型统一遍历，甚至组合更多高级函数功能使用，提升代码的表达能力。
+go 在之前没有泛型的时候，很难以类型安全的方式抽象迭代器模式出来，只能靠内置的 for range 来对 slice、map 类型遍历，我们很难扩展其它的自定义类型支持遍历。
+现在有了泛型也就有了这个能力来让我们自己实现通用的遍历方式。
+下面来让我们看看如何在 go 中实现这样的迭代器。
+Iterator关于 go 的泛型语法不是本篇文章的重点，就不再赘述，我们直接从 Iterator 的定义开始。
+要让一个类型支持遍历很简单，熟悉 go 的同学们可能过去或多或少都用过类似的技巧。
+让我们先从简单的 ForEach 函数开始，假设我们有一个使用 slice 实现的 List 类型，那么我们只需要利用 go 的函数一等公民特性，就能让外部来遍历这个类型。
+我们让 ForEach 传入一个函数类型的参数，来让调用者可以通过外部函数的方式来遍历 List 里面的元素。
+type MyList[T any] struct {  elements []T }  func (a MyList[T]) ForEach(f func(T)) {  for _, v := range a.elements {  f(v) // 交由调用者来定义遍历的动作  } }  func main() { 	var list = MyList[int]{[]int{1, 2, 3, 4, 5}} 	list."/>
+
+    <meta property="og:title" content="基于 go 泛型实现集合库之迭代器" />
+<meta property="og:description" content="迭代器模式迭代器模式（Iterator Pattern）是一种非常常用得设计模式。这种模式在 Java、C#、Rust 等语言中都有大量应用，这种模式可以以一种相同的方式，顺序访问集合类型中的元素，而无需关注集合类型实现方式。
+应用迭代器模式，我们就可以对无论是 数组、链表或是树形式实现的集合类型统一遍历，甚至组合更多高级函数功能使用，提升代码的表达能力。
+go 在之前没有泛型的时候，很难以类型安全的方式抽象迭代器模式出来，只能靠内置的 for range 来对 slice、map 类型遍历，我们很难扩展其它的自定义类型支持遍历。
+现在有了泛型也就有了这个能力来让我们自己实现通用的遍历方式。
+下面来让我们看看如何在 go 中实现这样的迭代器。
+Iterator关于 go 的泛型语法不是本篇文章的重点，就不再赘述，我们直接从 Iterator 的定义开始。
+要让一个类型支持遍历很简单，熟悉 go 的同学们可能过去或多或少都用过类似的技巧。
+让我们先从简单的 ForEach 函数开始，假设我们有一个使用 slice 实现的 List 类型，那么我们只需要利用 go 的函数一等公民特性，就能让外部来遍历这个类型。
+我们让 ForEach 传入一个函数类型的参数，来让调用者可以通过外部函数的方式来遍历 List 里面的元素。
+type MyList[T any] struct {  elements []T }  func (a MyList[T]) ForEach(f func(T)) {  for _, v := range a.elements {  f(v) // 交由调用者来定义遍历的动作  } }  func main() { 	var list = MyList[int]{[]int{1, 2, 3, 4, 5}} 	list." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kulics.github.io/posts/p0003/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-19T18:30:52+08:00" />
+<meta property="article:modified_time" content="2022-03-19T18:30:52+08:00" />
+
+
+
+    <title>
+  基于 go 泛型实现集合库之迭代器 · kulics
+</title>
+
+    
+      <link rel="canonical" href="https://kulics.github.io/posts/p0003/">
+    
+
+    <link rel="preload" href="https://kulics.github.io/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="https://kulics.github.io/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://kulics.github.io/img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://kulics.github.io/img/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="https://kulics.github.io/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kulics.github.io/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.95.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://kulics.github.io/">
+      kulics
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://kulics.github.io/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://kulics.github.io/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://kulics.github.io/projects/">Projects</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://kulics.github.io/posts/p0003/">
+              基于 go 泛型实现集合库之迭代器
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2022-03-19T18:30:52&#43;08:00">
+                三月 19, 2022
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="迭代器模式">
+  迭代器模式
+  <a class="heading-link" href="#%e8%bf%ad%e4%bb%a3%e5%99%a8%e6%a8%a1%e5%bc%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>迭代器模式（Iterator Pattern）是一种非常常用得设计模式。这种模式在 Java、C#、Rust 等语言中都有大量应用，这种模式可以以一种相同的方式，顺序访问集合类型中的元素，而无需关注集合类型实现方式。</p>
+<p>应用迭代器模式，我们就可以对无论是 数组、链表或是树形式实现的集合类型统一遍历，甚至组合更多高级函数功能使用，提升代码的表达能力。</p>
+<p>go 在之前没有泛型的时候，很难以类型安全的方式抽象迭代器模式出来，只能靠内置的 for range 来对 slice、map 类型遍历，我们很难扩展其它的自定义类型支持遍历。</p>
+<p>现在有了泛型也就有了这个能力来让我们自己实现通用的遍历方式。</p>
+<p>下面来让我们看看如何在 go 中实现这样的迭代器。</p>
+<h2 id="iterator">
+  Iterator
+  <a class="heading-link" href="#iterator">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>关于 go 的泛型语法不是本篇文章的重点，就不再赘述，我们直接从 Iterator 的定义开始。</p>
+<p>要让一个类型支持遍历很简单，熟悉 go 的同学们可能过去或多或少都用过类似的技巧。</p>
+<p>让我们先从简单的 ForEach 函数开始，假设我们有一个使用 slice 实现的 List 类型，那么我们只需要利用 go 的函数一等公民特性，就能让外部来遍历这个类型。</p>
+<p>我们让 ForEach 传入一个函数类型的参数，来让调用者可以通过外部函数的方式来遍历 List 里面的元素。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> MyList[T any] <span style="font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    elements []T
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> (a MyList[T]) ForEach(f <span style="font-weight:bold">func</span>(T)) {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span> _, v := <span style="font-weight:bold">range</span> a.elements {
+</span></span><span style="display:flex;"><span>        f(v) <span style="font-style:italic">// 交由调用者来定义遍历的动作
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> main() {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">var</span> list = MyList[<span style="">int</span>]{[]<span style="">int</span>{1, 2, 3, 4, 5}}
+</span></span><span style="display:flex;"><span>	list.ForEach(<span style="font-weight:bold">func</span>(i <span style="">int</span>) {
+</span></span><span style="display:flex;"><span>		println(i)
+</span></span><span style="display:flex;"><span>	})
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这个方式很简单，速度通常也很快，如果我们的集合类型都可以提供这样一个函数，也能支持一样的遍历。</p>
+<p>所以我们很容易就能得出这样一种迭代器模型：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> Iterator[T any] <span style="font-weight:bold">interface</span> {
+</span></span><span style="display:flex;"><span>    ForEach(f <span style="font-weight:bold">func</span>(T))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这样任何一个类型只要提供了 ForEach ，我们就可以用来遍历。</p>
+<p>但这样就够了吗？emmmmm，还稍微差了点。</p>
+<p>仔细想想我们就能发现，这种 ForEach 只能让所有集合类型立即执行遍历行为，如果我们想组合一些处理，就会带来很多额外的遍历，对性能造成负影响。</p>
+<p>如果迭代器可以每次调用都只返回下一个元素，直到无元素时停止，对我们组合各种操作就会便利得多了。</p>
+<p>我们可以梳理出这样两个函数，一个用来告诉我们还有没有下一个元素，另一个用来取得下一个元素，这样就可以组成迭代器的两个基本操作了，事实上 java 的迭代器也是这样设计的。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> Iterator[T any] <span style="font-weight:bold">interface</span> {
+</span></span><span style="display:flex;"><span>    HasNext() <span style="">bool</span>
+</span></span><span style="display:flex;"><span>    Next() T
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这样我们拿到一个迭代器之后，使用简单的 for 循环就能完成遍历了，比 ForEach 更方便的是，现在我们可以随时中断了。这里先假设 MyList已经实现了 HasNext 和 Next。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">func</span> main() {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">var</span> iter Iterator[<span style="">int</span>] = MyList[<span style="">int</span>]{[]<span style="">int</span>{1, 2, 3, 4, 5}}
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span> iter.HasNext() { <span style="font-style:italic">// 判断还有下一个
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        <span style="font-weight:bold">var</span> item = iter.Next()
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span> item == 3 {
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">break</span> <span style="font-style:italic">// 提前中断
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        }
+</span></span><span style="display:flex;"><span>        println(item)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>当然对于 go 来说，我们可以在一次调用的时候返回多个值，所以其实可以在 Next 的同时就判断是不是还有下一个元素，所以我们可以将 HasNext 和 Next 合并成一个 Next 函数，相信看了下面的代码后同学们都会觉得很熟悉。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> Iterator[T any] <span style="font-weight:bold">interface</span> {
+</span></span><span style="display:flex;"><span>    Next() (v T, ok <span style="">bool</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> main() {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">var</span> iter Iterator[<span style="">int</span>] = MyList[<span style="">int</span>]{[]<span style="">int</span>{1, 2, 3, 4, 5}}
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span> item, ok := iter.Next(); ok; item, ok = iter.Next() { <span style="font-style:italic">// 效果是等价的
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>        println(item)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="iterable">
+  Iterable
+  <a class="heading-link" href="#iterable">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>看到这里相信大家大概对迭代器有个基本的概念了，可能有部分同学已经发现了 Next 的问题了。</p>
+<p>是的，Next 是单向的，一旦开始调用，就只能一直向后移动直到终结了。</p>
+<p>这样的 Iterator 还不适合作为集合类型的通用接口，因为我们当然不希望 MyList 构造出来只能遍历一次了。</p>
+<p>所以我们需要另一个函数，来让我们可以反复生成不同的独立的 Iterator，这样就可以反复遍历了。</p>
+<p>这个函数很简单，就只要给我们取得 Iterator 就可以了，这里我们借鉴 java 的风格称之为 Iterable。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> Iterable[T any] <span style="font-weight:bold">interface</span> {
+</span></span><span style="display:flex;"><span>    Iter() Iterator[T]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>通过 Iterable 和 Iterator 的类型搭配，我们就可以实现出一种通用的方式来实现集合类型遍历的方法。</p>
+<p>所有 List、Map、Set 等数据结构都可以应用这种模式，下面直接给出 MyList 的简要实现。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> MyList[T any] <span style="font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>	elements []T
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> (a MyList[T]) Iter() Iterator[T] {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">return</span> &amp;MyListIter[T]{a, -1}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">type</span> Iterator[T any] <span style="font-weight:bold">interface</span> {
+</span></span><span style="display:flex;"><span>	Next() (v T, ok <span style="">bool</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">type</span> MyListIter[T any] <span style="font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>	list  MyList[T]
+</span></span><span style="display:flex;"><span>	index <span style="">int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> (a *MyListIter[T]) Next() (v T, ok <span style="">bool</span>) {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">var</span> null T
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">if</span> a.index &lt; len(a.list.elements)-1 {
+</span></span><span style="display:flex;"><span>		a.index++
+</span></span><span style="display:flex;"><span>		<span style="font-weight:bold">return</span> a.list.elements[a.index], <span style="font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">return</span> null, <span style="font-weight:bold">false</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="组合操作">
+  组合操作
+  <a class="heading-link" href="#%e7%bb%84%e5%90%88%e6%93%8d%e4%bd%9c">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>我们有了迭代器，用 for 来遍历已经没问题了，但我们前面还提到过的组合操作又是什么回事呢？</p>
+<p>别急，我们现在来看看。</p>
+<p>ForEach 对于我们来说非常熟悉了，我们现在可以基于迭代器来实现更通用的 ForEach 方法。</p>
+<p>对于任意的 Iterator，我们就用直接遍历就实现了。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">func</span> ForEach[T any](f <span style="font-weight:bold">func</span>(T), iter Iterator[T]) {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span> item, ok := iter.Next(); ok; item, ok = iter.Next() {
+</span></span><span style="display:flex;"><span>        f(item)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> main() {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">var</span> list = MyList[<span style="">int</span>]{[]<span style="">int</span>{1, 2, 3, 4, 5}}
+</span></span><span style="display:flex;"><span>	ForEach(<span style="font-weight:bold">func</span>(i <span style="">int</span>) {
+</span></span><span style="display:flex;"><span>		println(i)
+</span></span><span style="display:flex;"><span>	}, list.Iter())
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>是不是很方便？在 go1.18 给我们带来了泛型之后，我们终于不需要用骚操作来实现一个通用的 ForEach 了。</p>
+<p>ForEach 是一种典型的终结操作，终结操作的意思是到这一步就已经最终执行遍历来得到我们想要的结果了，这些函数通常是某一段操作的最后一环，同类型的还有 Contains、Sum、Average、Max、Min 之类的，大家有兴趣可以自己尝试实现一下。</p>
+<p>相比于终结操作，还有另一类操作是转换操作。很显然，这类操作就是那类不会立刻执行遍历，而是增加一些中间处理的函数，比如从一个迭代器映射到另一个迭代器，通常称之为 Map；或者是从一个迭代器中筛选出我们需要的元素，通常称之为 Filter；同类的还有 Step、Concat、Index 等。</p>
+<p>我们来看看最典型的 Map 是如何实现的。</p>
+<p>很简单，既然我们每次调用 Next 就可以取得下一个元素，那么我们只要将这个元素传给处理函数，就能得到一个映射后的另一个值。</p>
+<p>我们先用伪代码看看转换函数是怎么工作的：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">var</span> iter Iterator[T] = ......
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">var</span> transform <span style="font-weight:bold">func</span>(T) R = ...... <span style="font-style:italic">// 假设我们有一个将 T 类型转换到 R 类型的函数
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>item, ok := iter.Next() 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">if</span> ok {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">var</span> newItem R = transform(item) <span style="font-style:italic">// 现在我们得到了一个映射后的值
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>}
+</span></span></code></pre></div><p>既然我们只需要对 Next 函数调用一下 transform，那我们只需要一个将 transform 存到一个新的迭代器里，然后这个新迭代器每次 Next 时调用 transform 就可以实现完美一对一的映射了。</p>
+<p>下面我们看看一个最简单的实现:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> MapIter[T any, R any] <span style="font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    transform <span style="font-weight:bold">func</span>(T) R
+</span></span><span style="display:flex;"><span>	iterator  Iterator[T]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> (a *MapIter[T, R]) Next() (R, <span style="">bool</span>) { <span style="font-style:italic">// 注意新的 MapIter 实现的 Next 返回的是 R 而不是 T
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    <span style="font-weight:bold">var</span> null R
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">if</span> v, ok := a.iterator.Next(); ok {
+</span></span><span style="display:flex;"><span>		<span style="font-weight:bold">return</span> a.transform(v), <span style="font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">return</span> null, <span style="font-weight:bold">false</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>有了 MapIter，我们包装一下 Map 函数就能用了。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">func</span> Map[T any, R any](transform <span style="font-weight:bold">func</span>(T) R, iter Iterator[T]) Iterator[R] {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">return</span> &amp;MapIter[T, R]{transform, iter}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>非常简单易用，我们看看使用效果吧。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">func</span> main() {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">var</span> list = MyList[<span style="">int</span>]{[]<span style="">int</span>{1, 2, 3, 4, 5}}
+</span></span><span style="display:flex;"><span>	ForEach(<span style="font-weight:bold">func</span>(i <span style="">bool</span>) {
+</span></span><span style="display:flex;"><span>		println(i)
+</span></span><span style="display:flex;"><span>	}, Map(<span style="font-weight:bold">func</span>(i <span style="">int</span>) <span style="">bool</span> {
+</span></span><span style="display:flex;"><span>		<span style="font-weight:bold">return</span> i%2 == 0
+</span></span><span style="display:flex;"><span>	}, list.Iter()))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>我们用 Map 来判断每个元素是奇数还是偶数，最终打印效果是：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">false</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">false</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">false</span>
+</span></span></code></pre></div><h2 id="总结">
+  总结
+  <a class="heading-link" href="#%e6%80%bb%e7%bb%93">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>相信经过上面的学习，我们已经对 go 的泛型可以给我们带来的可能性有了更进一步的认识。</p>
+<p>以上大部分代码的实现可以在 <a href="">https://github.com/kulics/gollection</a> 查阅，欢迎 star。</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+    integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+    integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
+      }
+    );"></script>
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+    2022
+     Kulics 
+    ·
+    
+     <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="https://kulics.github.io/js/coder.min.8fb86376a16e684af472a329aef502dbebcfab65ce264e9750d144912947c602.js" integrity="sha256-j7hjdqFuaEr0cqMprvUC2&#43;vPq2XOJk6XUNFEkSlHxgI="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

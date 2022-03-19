@@ -4,26 +4,27 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+
+    
 
     <meta name="author" content="Kulics">
-    <meta name="description" content="Kulics&#39; personal website">
+    <meta name="description" content="Design backgroundWhen I was developing a multi-platform XyKey a few years ago, I didn&rsquo;t have the option because the cross-platform solution wasn&rsquo;t mature enough at the time Instead of a cross-platform implementation, I chose to develop for each platform using the official language, for which I approached Java/ Kotlin (Android), Swift/OC (iOS), C# (UWP). I also work on blockchain technology, and the existing mainstream blockchain solutions also make extensive use of JS &#43; Go&rsquo;s Combining front and back-end product development.">
     <meta name="keywords" content="blog,developer,personal">
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Out of the box, back to intuition - Feel Lang Design"/>
-<meta name="twitter:description" content="Design background When I was developing a multi-platform XyKey a few years ago, I didn&rsquo;t have the option because the cross-platform solution wasn&rsquo;t mature enough at the time Instead of a cross-platform implementation, I chose to develop for each platform using the official language, for which I approached Java/ Kotlin (Android), Swift/OC (iOS), C# (UWP). I also work on blockchain technology, and the existing mainstream blockchain solutions also make extensive use of JS &#43; Go&rsquo;s Combining front and back-end product development."/>
+<meta name="twitter:description" content="Design backgroundWhen I was developing a multi-platform XyKey a few years ago, I didn&rsquo;t have the option because the cross-platform solution wasn&rsquo;t mature enough at the time Instead of a cross-platform implementation, I chose to develop for each platform using the official language, for which I approached Java/ Kotlin (Android), Swift/OC (iOS), C# (UWP). I also work on blockchain technology, and the existing mainstream blockchain solutions also make extensive use of JS &#43; Go&rsquo;s Combining front and back-end product development."/>
 
     <meta property="og:title" content="Out of the box, back to intuition - Feel Lang Design" />
-<meta property="og:description" content="Design background When I was developing a multi-platform XyKey a few years ago, I didn&rsquo;t have the option because the cross-platform solution wasn&rsquo;t mature enough at the time Instead of a cross-platform implementation, I chose to develop for each platform using the official language, for which I approached Java/ Kotlin (Android), Swift/OC (iOS), C# (UWP). I also work on blockchain technology, and the existing mainstream blockchain solutions also make extensive use of JS &#43; Go&rsquo;s Combining front and back-end product development." />
+<meta property="og:description" content="Design backgroundWhen I was developing a multi-platform XyKey a few years ago, I didn&rsquo;t have the option because the cross-platform solution wasn&rsquo;t mature enough at the time Instead of a cross-platform implementation, I chose to develop for each platform using the official language, for which I approached Java/ Kotlin (Android), Swift/OC (iOS), C# (UWP). I also work on blockchain technology, and the existing mainstream blockchain solutions also make extensive use of JS &#43; Go&rsquo;s Combining front and back-end product development." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kulics.github.io/posts/p0002/" />
+<meta property="og:url" content="https://kulics.github.io/posts/p0002/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-07-18T20:24:28+08:00" />
 <meta property="article:modified_time" content="2020-07-18T20:24:28+08:00" />
 
 
-    
-      <base href="https://kulics.github.io/posts/p0002/">
-    
+
     <title>
   Out of the box, back to intuition - Feel Lang Design · kulics
 </title>
@@ -32,9 +33,7 @@
       <link rel="canonical" href="https://kulics.github.io/posts/p0002/">
     
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <link rel="preload" href="https://kulics.github.io/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
 
     
       
@@ -47,44 +46,59 @@
     
 
     
-      <link rel="stylesheet" href="https://kulics.github.io/css/custom.css" />
-    
 
     
-    
+
     <link rel="icon" type="image/png" href="https://kulics.github.io/img/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://kulics.github.io/img/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.73.0" />
+    <link rel="apple-touch-icon" href="https://kulics.github.io/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kulics.github.io/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.95.0" />
   </head>
 
-  <body class=" ">
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
     <main class="wrapper">
       <nav class="navigation">
   <section class="container">
     <a class="navigation-title" href="https://kulics.github.io/">
       kulics
     </a>
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
         
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://kulics.github.io/posts/">Posts</a>
-          </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://kulics.github.io/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://kulics.github.io/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://kulics.github.io/projects/">Projects</a>
+            </li>
+          
         
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://kulics.github.io/about/">About</a>
-          </li>
         
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://kulics.github.io/projects/">Projects</a>
-          </li>
-        
-      
-      
-    </ul>
+      </ul>
+    
   </section>
 </nav>
 
@@ -95,234 +109,267 @@
     <article>
       <header>
         <div class="post-title">
-          <h1 class="title">Out of the box, back to intuition - Feel Lang Design</h1>
+          <h1 class="title">
+            <a class="title-link" href="https://kulics.github.io/posts/p0002/">
+              Out of the box, back to intuition - Feel Lang Design
+            </a>
+          </h1>
         </div>
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
-              <i class="fas fa-calendar"></i>
-              <time datetime='2020-07-18T20:24:28&#43;08:00'>
-                July 18, 2020
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2020-07-18T20:24:28&#43;08:00">
+                七月 18, 2020
               </time>
             </span>
             <span class="reading-time">
-              <i class="fas fa-clock"></i>
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
               
             </span>
           </div>
+          
           
           
         </div>
       </header>
 
       <div>
-        <h2 id="design-background">Design background</h2>
+        
+        <h2 id="design-background">
+  Design background
+  <a class="heading-link" href="#design-background">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>When I was developing a multi-platform XyKey a few years ago, I didn&rsquo;t have the option because the cross-platform solution wasn&rsquo;t mature enough at the time Instead of a cross-platform implementation, I chose to develop for each platform using the official language, for which I approached Java/ Kotlin (Android), Swift/OC (iOS), C# (UWP). I also work on blockchain technology, and the existing mainstream blockchain solutions also make extensive use of JS + Go&rsquo;s Combining front and back-end product development.</p>
 <p>After switching back and forth between languages, I became interested in the grammatical differences in expressing the same functionality in different languages, which led to an exploration of grammatical design, which led to the birth of Feel.</p>
-<h2 id="language-design-problem-number-one">Language design problem number one</h2>
+<h2 id="language-design-problem-number-one">
+  Language design problem number one
+  <a class="heading-link" href="#language-design-problem-number-one">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>In many languages, there is more than one way to express a function.</p>
 <p><strong>Do we need to design different syntaxes for the same requirements?</strong></p>
 <p>Below are some examples of functions in the languages I&rsquo;ve used, all eg are functions.</p>
 <p>Go: Most of the time functions are declared with func, it&rsquo;s one of the more consistent design, but in interface still uses a different way of describing things.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="font-weight:bold">func</span> eg1(x <span style="">int</span>) <span style="">int</span> {
-	<span style="font-weight:bold">return</span> 1
-}
-
-<span style="font-weight:bold">var</span> eg2 = <span style="font-weight:bold">func</span>(x <span style="">int</span>) <span style="">int</span> {
-	<span style="font-weight:bold">return</span> 1
-}
-
-<span style="font-weight:bold">type</span> foo <span style="font-weight:bold">struct</span> {
-	eg3 <span style="font-weight:bold">func</span>(<span style="">int</span>) <span style="">int</span>
-}
-
-<span style="font-weight:bold">type</span> bar <span style="font-weight:bold">interface</span> {
-	eg4(<span style="">int</span>) <span style="">int</span>
-}
-</code></pre></div><p>C#: uses C-style descriptions most of the time, but uses counterintuitive generic types in function types. And the Lambda syntax doesn&rsquo;t see the connection to functions.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="">int</span> eg1(<span style="">int</span> x) 
-{
-    Func&lt;<span style="">int</span>,<span style="">int</span>&gt; eg2 = (<span style="">int</span> x) =&gt; 
-    {
-        <span style="font-weight:bold">return</span> 1;
-    };
-    <span style="font-weight:bold">return</span> 1;
-}
-
-<span style="font-weight:bold">interface</span> foo 
-{
-    <span style="">int</span> eg3(<span style="">int</span> x);
-}
-
-Action&lt;<span style="">int</span>&gt; eg4;
-</code></pre></div><p>Kotlin: function definition, function type, and lambda are the three styles.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">fun</span> eg1(x: Int): Int {
-    <span style="font-weight:bold">val</span> eg2: (Int) -&gt; Int = { i -&gt;
-        1
-    }
-    <span style="font-weight:bold">return</span> 1
-}
-
-<span style="font-weight:bold">val</span> eg3 = <span style="font-weight:bold">fun</span>(x: Int): Int {
-    <span style="font-weight:bold">return</span> 1
-}
-
-<span style="font-weight:bold">interface</span> <span style="font-weight:bold">name</span> {
-    <span style="font-weight:bold">fun</span> eg4(x: Int)
-    <span style="font-weight:bold">val</span> eg5: (Int) -&gt; Unit
-}
-</code></pre></div><p>Swift: The better thing about swift is that function definitions and function types are represented using the same arrows, but in the Lambda, however, uses in for partitioning.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> eg1(x: Int) -&gt; Int {
-    <span style="font-weight:bold">let</span> eg2: (Int) -&gt; Int = { i <span style="font-weight:bold">in</span>
-        <span style="font-weight:bold">return</span> 1
-    }
-    <span style="font-weight:bold">return</span> 1
-}
-
-<span style="font-weight:bold">protocol</span> <span style="font-weight:bold">name</span> {
-    <span style="font-weight:bold">func</span> eg3(x: Int)
-}
-
-<span style="font-weight:bold">var</span> eg4: (Int) -&gt; ()
-</code></pre></div><p>Bind a name to a resource, also can be written in many different ways.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">func</span> eg1(x <span style="">int</span>) <span style="">int</span> {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">return</span> 1
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">var</span> eg2 = <span style="font-weight:bold">func</span>(x <span style="">int</span>) <span style="">int</span> {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">return</span> 1
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">type</span> foo <span style="font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>	eg3 <span style="font-weight:bold">func</span>(<span style="">int</span>) <span style="">int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">type</span> bar <span style="font-weight:bold">interface</span> {
+</span></span><span style="display:flex;"><span>	eg4(<span style="">int</span>) <span style="">int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>C#: uses C-style descriptions most of the time, but uses counterintuitive generic types in function types. And the Lambda syntax doesn&rsquo;t see the connection to functions.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="">int</span> eg1(<span style="">int</span> x) 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Func&lt;<span style="">int</span>,<span style="">int</span>&gt; eg2 = (<span style="">int</span> x) =&gt; 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> 1;
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> 1;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">interface</span> <span style="font-weight:bold">foo</span> 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="">int</span> eg3(<span style="">int</span> x);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Action&lt;<span style="">int</span>&gt; eg4;
+</span></span></code></pre></div><p>Kotlin: function definition, function type, and lambda are the three styles.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="font-weight:bold">fun</span> eg1(x: Int): Int {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">val</span> eg2: (Int) -&gt; Int = { i -&gt;
+</span></span><span style="display:flex;"><span>        1
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> 1
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">val</span> eg3 = <span style="font-weight:bold">fun</span>(x: Int): Int {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> 1
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">interface</span> <span style="font-weight:bold">name</span> {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fun</span> eg4(x: Int)
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">val</span> eg5: (Int) -&gt; Unit
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Swift: The better thing about swift is that function definitions and function types are represented using the same arrows, but in the Lambda, however, uses in for partitioning.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="font-weight:bold">func</span> eg1(x: Int) -&gt; Int {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">let</span> eg2: (Int) -&gt; Int = { i <span style="font-weight:bold">in</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> 1
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> 1
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">protocol</span> <span style="font-weight:bold">name</span> {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">func</span> eg3(x: Int)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">var</span> eg4: (Int) -&gt; ()
+</span></span></code></pre></div><p>Bind a name to a resource, also can be written in many different ways.</p>
 <p>Below are some of the language identifier representations I&rsquo;ve used, all eg is an identifier of a resource.</p>
 <p>Swift: Using different prefixes for different types of bind identifiers is one of the better practices.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> eg1 = 1
-
-<span style="font-weight:bold">let</span> eg2 = 1
-
-<span style="font-weight:bold">func</span> eg3() {}
-
-<span style="font-weight:bold">class</span> <span style="font-weight:bold">eg4</span> {}
-
-<span style="font-weight:bold">protocol</span> <span style="font-weight:bold">eg5</span> {}
-</code></pre></div><p>Go: variables, constants, and functions use one style, and defined types use another.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="font-weight:bold">var</span> eg1 = 1
-
-<span style="font-weight:bold">const</span> eg2 = 1
-
-<span style="font-weight:bold">func</span> eg3() {}
-
-<span style="font-weight:bold">type</span> eg4 <span style="font-weight:bold">struct</span>{}
-
-<span style="font-weight:bold">type</span> eg5 <span style="font-weight:bold">interface</span>{}
-</code></pre></div><p>C#: Classes and interfaces use one style, variables, constants, and functions use three different styles.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">int eg1 = 1
-const int eg2 = 2
-int eg3() {}
-class eg4 {}
-interface eg5 {}
-</code></pre></div><h2 id="language-design-problem-number-two">Language design problem number two</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="font-weight:bold">var</span> eg1 = 1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">let</span> eg2 = 1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> eg3() {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">eg4</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">protocol</span> <span style="font-weight:bold">eg5</span> {}
+</span></span></code></pre></div><p>Go: variables, constants, and functions use one style, and defined types use another.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">var</span> eg1 = 1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">const</span> eg2 = 1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> eg3() {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">type</span> eg4 <span style="font-weight:bold">struct</span>{}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">type</span> eg5 <span style="font-weight:bold">interface</span>{}
+</span></span></code></pre></div><p>C#: Classes and interfaces use one style, variables, constants, and functions use three different styles.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>int eg1 = 1
+</span></span><span style="display:flex;"><span>const int eg2 = 2
+</span></span><span style="display:flex;"><span>int eg3() {}
+</span></span><span style="display:flex;"><span>class eg4 {}
+</span></span><span style="display:flex;"><span>interface eg5 {}
+</span></span></code></pre></div><h2 id="language-design-problem-number-two">
+  Language design problem number two
+  <a class="heading-link" href="#language-design-problem-number-two">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>Once we start developing a project of a certain size, the importance of coding conventions is always repeated. Varying code styles can make it difficult for us to collaborate.</p>
 <p><strong>If the specification is so important, should we force it at the language level?</strong></p>
 <p>Below I give several different styles of code, and in the absence of a uniform style, we may see the following codes coexist.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">if</span> (foo == 0) 
-{
-  	print(foo)
-} 
-<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (foo == 1) 
-{
-  	print(foo)
-} 
-<span style="font-weight:bold">else</span> 
-{
-  	print(foo)
-}
-<span style="font-style:italic">//////////////</span>
-<span style="font-weight:bold">if</span> (foo == 0) {
-  	print(foo)
-} 
-<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (foo == 1) {
-  	print(foo)
-} 
-<span style="font-weight:bold">else</span> {
-  	print(foo)
-}
-<span style="font-style:italic">//////////////</span>
-<span style="font-weight:bold">if</span> (foo == 0) {
-  	print(foo)
-} <span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (foo == 1) {
-  	print(foo)
-} <span style="font-weight:bold">else</span> {
-  	print(foo)
-}
-
-</code></pre></div><p>Of course, one might also write the following.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">if</span> (foo == 0) 
-		{
-    print(foo)
-  	} 
-<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (foo == 1) 
-		{
-    print(foo)
-  	} 
-<span style="font-weight:bold">else</span> 
-		{
-    	print(foo)
-  	}
-<span style="font-style:italic">//////////////</span>
-<span style="font-weight:bold">if</span> (foo == 0) print(foo)
-<span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (foo == 1) print(foo)
-<span style="font-weight:bold">else</span> print(foo)
-</code></pre></div><h2 id="language-design-problem-number-three">Language design problem number three</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="font-weight:bold">if</span> (foo == 0) 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  	print(foo)
+</span></span><span style="display:flex;"><span>} 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (foo == 1) 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  	print(foo)
+</span></span><span style="display:flex;"><span>} 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">else</span> 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  	print(foo)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="font-style:italic">//////////////</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">if</span> (foo == 0) {
+</span></span><span style="display:flex;"><span>  	print(foo)
+</span></span><span style="display:flex;"><span>} 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (foo == 1) {
+</span></span><span style="display:flex;"><span>  	print(foo)
+</span></span><span style="display:flex;"><span>} 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>  	print(foo)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="font-style:italic">//////////////</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">if</span> (foo == 0) {
+</span></span><span style="display:flex;"><span>  	print(foo)
+</span></span><span style="display:flex;"><span>} <span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (foo == 1) {
+</span></span><span style="display:flex;"><span>  	print(foo)
+</span></span><span style="display:flex;"><span>} <span style="font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>  	print(foo)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Of course, one might also write the following.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="font-weight:bold">if</span> (foo == 0) 
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>    print(foo)
+</span></span><span style="display:flex;"><span>  	} 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (foo == 1) 
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>    print(foo)
+</span></span><span style="display:flex;"><span>  	} 
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">else</span> 
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>    	print(foo)
+</span></span><span style="display:flex;"><span>  	}
+</span></span><span style="display:flex;"><span><span style="font-style:italic">//////////////</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">if</span> (foo == 0) print(foo)
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> (foo == 1) print(foo)
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">else</span> print(foo)
+</span></span></code></pre></div><h2 id="language-design-problem-number-three">
+  Language design problem number three
+  <a class="heading-link" href="#language-design-problem-number-three">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>Some languages are dynamic and some are static, and they have their own merits, but we try to add static features to dynamic languages (TypeScript) and dynamic features to static languages (Go).</p>
 <p><strong>Is there a balance between this static and dynamic solution?</strong></p>
 <p>TypeScript: Through an implicit interface, dynamic types are given a type check so that only objects that meet the interface requirements can be used.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">interface</span> LabelledValue {
-    label: <span style="">string</span>;
-}
-
-<span style="font-weight:bold">function</span> printLabel(labelledObj: <span style="">LabelledValue</span>) {
-    console.log(labelledObj.label);
-}
-
-<span style="font-weight:bold">let</span> myObj = { size: <span style="">10</span>, label: <span style="font-style:italic">&#34;Size 10 Object&#34;</span> };
-printLabel(myObj);
-
-</code></pre></div><p>Go: implements a static duck type via an implicit interface, where only objects that meet the function signature requirements are used.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="font-weight:bold">type</span> LabelledValue <span style="font-weight:bold">interface</span> {
-	Label() <span style="">string</span>
-}
-
-<span style="font-weight:bold">func</span> printLabel(labelledObj LabelledValue) {
-	println(labelledObj.Label())
-}
-
-<span style="font-weight:bold">type</span> Obj <span style="font-weight:bold">struct</span> {
-	size <span style="">int</span>
-}
-
-<span style="font-weight:bold">func</span> (this Obj) Label() <span style="">string</span> {
-	<span style="font-weight:bold">return</span> <span style="font-style:italic">&#34;Size 10 Object&#34;</span>
-}
-
-</code></pre></div><h2 id="language-design-problem-number-four">Language design problem number four</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="font-weight:bold">interface</span> LabelledValue {
+</span></span><span style="display:flex;"><span>    label: <span style="">string</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">function</span> printLabel(labelledObj: <span style="">LabelledValue</span>) {
+</span></span><span style="display:flex;"><span>    console.log(labelledObj.label);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">let</span> myObj = { size: <span style="">10</span>, label: <span style="font-style:italic">&#34;Size 10 Object&#34;</span> };
+</span></span><span style="display:flex;"><span>printLabel(myObj);
+</span></span></code></pre></div><p>Go: implements a static duck type via an implicit interface, where only objects that meet the function signature requirements are used.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="font-weight:bold">type</span> LabelledValue <span style="font-weight:bold">interface</span> {
+</span></span><span style="display:flex;"><span>	Label() <span style="">string</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> printLabel(labelledObj LabelledValue) {
+</span></span><span style="display:flex;"><span>	println(labelledObj.Label())
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">type</span> Obj <span style="font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>	size <span style="">int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">func</span> (this Obj) Label() <span style="">string</span> {
+</span></span><span style="display:flex;"><span>	<span style="font-weight:bold">return</span> <span style="font-style:italic">&#34;Size 10 Object&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="language-design-problem-number-four">
+  Language design problem number four
+  <a class="heading-link" href="#language-design-problem-number-four">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>There are more and less keywords in different languages, but in fact most languages can be Turing-complete.</p>
 <p><strong>Do we need a lot of keywords? Or, if there are no keywords, is it okay?</strong></p>
 <p>Below are keywords for a language, and some contextual keywords not shown.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">| keyword   |            |           |           |
-| --------- | ---------- | --------- | --------- |
-| abstract  | as         | base      | bool      |
-| break     | byte       | case      | catch     |
-| char      | checked    | class     | const     |
-| continue  | decimal    | default   | delegate  |
-| do        | double     | else      | enum      |
-| event     | explicit   | extern    | false     |
-| finally   | fixed      | float     | for       |
-| foreach   | goto       | if        | implicit  |
-| in        | int        | interface | internal  |
-| is        | lock       | long      | namespace |
-| new       | null       | object    | operator  |
-| out       | override   | params    | private   |
-| protected | public     | readonly  | ref       |
-| return    | sbyte      | sealed    | short     |
-| sizeof    | stackalloc | static    | string    |
-| struct    | switch     | this      | throw     |
-| true      | try        | typeof    | uint      |
-| ulong     | unchecked  | unsafe    | ushort    |
-| using     | virtual    | void      | volatile  |
-| while     |            |           |           |
-</code></pre></div><h2 id="key-issues">Key issues</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>| keyword   |            |           |           |
+</span></span><span style="display:flex;"><span>| --------- | ---------- | --------- | --------- |
+</span></span><span style="display:flex;"><span>| abstract  | as         | base      | bool      |
+</span></span><span style="display:flex;"><span>| break     | byte       | case      | catch     |
+</span></span><span style="display:flex;"><span>| char      | checked    | class     | const     |
+</span></span><span style="display:flex;"><span>| continue  | decimal    | default   | delegate  |
+</span></span><span style="display:flex;"><span>| do        | double     | else      | enum      |
+</span></span><span style="display:flex;"><span>| event     | explicit   | extern    | false     |
+</span></span><span style="display:flex;"><span>| finally   | fixed      | float     | for       |
+</span></span><span style="display:flex;"><span>| foreach   | goto       | if        | implicit  |
+</span></span><span style="display:flex;"><span>| in        | int        | interface | internal  |
+</span></span><span style="display:flex;"><span>| is        | lock       | long      | namespace |
+</span></span><span style="display:flex;"><span>| new       | null       | object    | operator  |
+</span></span><span style="display:flex;"><span>| out       | override   | params    | private   |
+</span></span><span style="display:flex;"><span>| protected | public     | readonly  | ref       |
+</span></span><span style="display:flex;"><span>| return    | sbyte      | sealed    | short     |
+</span></span><span style="display:flex;"><span>| sizeof    | stackalloc | static    | string    |
+</span></span><span style="display:flex;"><span>| struct    | switch     | this      | throw     |
+</span></span><span style="display:flex;"><span>| true      | try        | typeof    | uint      |
+</span></span><span style="display:flex;"><span>| ulong     | unchecked  | unsafe    | ushort    |
+</span></span><span style="display:flex;"><span>| using     | virtual    | void      | volatile  |
+</span></span><span style="display:flex;"><span>| while     |            |           |           |
+</span></span></code></pre></div><h2 id="key-issues">
+  Key issues
+  <a class="heading-link" href="#key-issues">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>1 . Do I need more than one syntax for the same function?</p>
 <p><strong>We don&rsquo;t need multiple grammars, the same needs can be unified organically.</strong></p>
 <p>2 . Is compulsory regulation necessary?</p>
@@ -331,7 +378,12 @@ printLabel(myObj);
 <p><strong>We want both static checks and dynamic degrees of freedom. Static duck type might be a solution.</strong></p>
 <p>4 . Are keywords necessary?</p>
 <p><strong>If the syntax structure is small enough, we can try removing the keyword.</strong></p>
-<h2 id="functions">Functions</h2>
+<h2 id="functions">
+  Functions
+  <a class="heading-link" href="#functions">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>Our needs for function syntax can be summarized as follows.</p>
 <ul>
 <li>Functions are also values, and the way you define a function should be the same as the way you define a function variable.</li>
@@ -340,43 +392,48 @@ printLabel(myObj);
 </ul>
 <p>Suppose that all our resources are defined using the form <code>let id : type = XXX</code>.</p>
 <p>Then we can start by giving a function syntax like this.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x : int) int {
-    return 1
-}
-</code></pre></div><p>The syntax is very common, using the <code>func</code> keyword to define types, a formal parameter in <code>()</code>, and a return value after that.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>let foo = func(x : int) int {
+</span></span><span style="display:flex;"><span>    return 1
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The syntax is very common, using the <code>func</code> keyword to define types, a formal parameter in <code>()</code>, and a return value after that.</p>
 <p>Next we consider that modern function designs often allow multiple return values, so we need to use <code>()</code> to wrap more return values.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x : int, y : bool) (int, bool) {
-    return (1, true)
-}
-</code></pre></div><p>This is too close to <code>()</code> of the form parameter and return value type, which is difficult to read and requires a separator, so we can introduce <code>-&gt;</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = func(x : int, y : bool) -&gt; (int, bool) {
-    return (1, true)
-}
-</code></pre></div><p>When <code>-&gt;</code> is added, <code>()-&gt;()</code> can form the type structure of a function, at which point the existence of <code>func</code> is not necessary, so we remove the keyword.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x : int, y : bool) -&gt; (int, bool) {
-    return (1, true)
-}
-</code></pre></div><p>Writing <code>()</code> twice every time is a bit of a pain, but we don&rsquo;t really need two <code>()</code>s. We can combine the formal parameter and return type put them together and split them using <code>-&gt;</code>. By the way, you can also omit the <code>()</code> of <code>return</code> as well.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x : int, y : bool -&gt; int, bool) {
-    return 1, true
-}
-</code></pre></div><p>Wait, do we still need the <code>return</code> keyword? I don&rsquo;t think it&rsquo;s needed, we could use a better looking <code>&lt;-</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x : int, y : bool -&gt; int, bool) {
-    &lt;- 1, true
-}
-</code></pre></div><p>The left and right functions seem a bit unbalanced, we can force the return value types to have the same name description to make them look more consistent. and can also give more user-friendly instructions.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = (x : int, y : bool -&gt; a : int, b : bool) {
-    &lt;- 1, true
-}
-</code></pre></div><p>Here the function description has been shaped, we use <code>(-&gt;)</code> for the function type and <code>{}</code> for the function logic.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>let foo = func(x : int, y : bool) (int, bool) {
+</span></span><span style="display:flex;"><span>    return (1, true)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This is too close to <code>()</code> of the form parameter and return value type, which is difficult to read and requires a separator, so we can introduce <code>-&gt;</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>let foo = func(x : int, y : bool) -&gt; (int, bool) {
+</span></span><span style="display:flex;"><span>    return (1, true)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>When <code>-&gt;</code> is added, <code>()-&gt;()</code> can form the type structure of a function, at which point the existence of <code>func</code> is not necessary, so we remove the keyword.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>let foo = (x : int, y : bool) -&gt; (int, bool) {
+</span></span><span style="display:flex;"><span>    return (1, true)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Writing <code>()</code> twice every time is a bit of a pain, but we don&rsquo;t really need two <code>()</code>s. We can combine the formal parameter and return type put them together and split them using <code>-&gt;</code>. By the way, you can also omit the <code>()</code> of <code>return</code> as well.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>let foo = (x : int, y : bool -&gt; int, bool) {
+</span></span><span style="display:flex;"><span>    return 1, true
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Wait, do we still need the <code>return</code> keyword? I don&rsquo;t think it&rsquo;s needed, we could use a better looking <code>&lt;-</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>let foo = (x : int, y : bool -&gt; int, bool) {
+</span></span><span style="display:flex;"><span>    &lt;- 1, true
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The left and right functions seem a bit unbalanced, we can force the return value types to have the same name description to make them look more consistent. and can also give more user-friendly instructions.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>let foo = (x : int, y : bool -&gt; a : int, b : bool) {
+</span></span><span style="display:flex;"><span>    &lt;- 1, true
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Here the function description has been shaped, we use <code>(-&gt;)</code> for the function type and <code>{}</code> for the function logic.</p>
 <p>As long as we have some type derivation skills, we can continue to omit argument and return types, and both lambda and function declarations can share a common description.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo : (int, bool -&gt; int, bool) = (x, y) {
-    &lt;- 1, true
-}
-</code></pre></div><p>Example of an unparallel function with function parameters.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo = () {}
-let bar = (fn : (-&gt;)) {}
-</code></pre></div><h2 id="definitions">Definitions</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>let foo : (int, bool -&gt; int, bool) = (x, y) {
+</span></span><span style="display:flex;"><span>    &lt;- 1, true
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Example of an unparallel function with function parameters.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>let foo = () {}
+</span></span><span style="display:flex;"><span>let bar = (fn : (-&gt;)) {}
+</span></span></code></pre></div><h2 id="definitions">
+  Definitions
+  <a class="heading-link" href="#definitions">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>Our need for a definition grammar can be summarized as follows.</p>
 <ul>
 <li>All acts of creating a name are definitions and should be used in the same way.</li>
@@ -384,199 +441,220 @@ let bar = (fn : (-&gt;)) {}
 <li>Distinguish between variable and immutable.</li>
 </ul>
 <p>Suppose we start by defining immutable with <code>let xxx : type = value</code> and define variable with <code>var xxx : type = value</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo : int = 0
-var bar : int = 0
-</code></pre></div><p>Using <code>var</code> is equivalent to one more way of defining declarations, rather than using <code>mut</code> to declare variability, which may have consistency.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">let foo : int = 0
-let mut bar : int = 0
-</code></pre></div><p>Let&rsquo;s think about the fact that this structure actually holds without the <code>let</code> keyword, so we remove it.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">foo : int = 0
-mut bar : int = 0
-</code></pre></div><p>Now we are left with the keyword <code>mut</code>, which in many specifications is recommended to describe constants in upper case and variables in lower case. Let&rsquo;s just let it be the syntax.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo : int = 0
-bar : int = 0
-</code></pre></div><p>By this point, we don&rsquo;t need to explicitly write the type either, as long as type derivation is supported, and omitting the type allows us to combine it into <code>:=</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := 0
-bar := 0
-</code></pre></div><p>Of course, if it doesn&rsquo;t necessarily carry a value, we can also omit the right side and keep the type.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo : int
-bar : int
-</code></pre></div><p>Now that our definition syntax is complete, replacing the example of the previous function doesn&rsquo;t require changing much of anything.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := (x : int, y : bool -&gt; a : int, b : bool) {
-    &lt;- 1, true
-}
-</code></pre></div><h2 id="select-structure">Select structure</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>let foo : int = 0
+</span></span><span style="display:flex;"><span>var bar : int = 0
+</span></span></code></pre></div><p>Using <code>var</code> is equivalent to one more way of defining declarations, rather than using <code>mut</code> to declare variability, which may have consistency.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>let foo : int = 0
+</span></span><span style="display:flex;"><span>let mut bar : int = 0
+</span></span></code></pre></div><p>Let&rsquo;s think about the fact that this structure actually holds without the <code>let</code> keyword, so we remove it.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>foo : int = 0
+</span></span><span style="display:flex;"><span>mut bar : int = 0
+</span></span></code></pre></div><p>Now we are left with the keyword <code>mut</code>, which in many specifications is recommended to describe constants in upper case and variables in lower case. Let&rsquo;s just let it be the syntax.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Foo : int = 0
+</span></span><span style="display:flex;"><span>bar : int = 0
+</span></span></code></pre></div><p>By this point, we don&rsquo;t need to explicitly write the type either, as long as type derivation is supported, and omitting the type allows us to combine it into <code>:=</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Foo := 0
+</span></span><span style="display:flex;"><span>bar := 0
+</span></span></code></pre></div><p>Of course, if it doesn&rsquo;t necessarily carry a value, we can also omit the right side and keep the type.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Foo : int
+</span></span><span style="display:flex;"><span>bar : int
+</span></span></code></pre></div><p>Now that our definition syntax is complete, replacing the example of the previous function doesn&rsquo;t require changing much of anything.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Foo := (x : int, y : bool -&gt; a : int, b : bool) {
+</span></span><span style="display:flex;"><span>    &lt;- 1, true
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="select-structure">
+  Select structure
+  <a class="heading-link" href="#select-structure">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>The form and functionality of the <code>if</code> selection structure is very mature, but there are possibilities for further simplification of the format.</p>
 <p>Let&rsquo;s start with a common <code>if</code> statement, and assume that <code>{</code> is not line feedable.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if (foo == 0) {
-    ......
-} else if (foo == 1) {
-    ......
-} else if (foo == 2) {
-    ......
-} else {
-    ......
-}
-</code></pre></div><p>Removing <code>()</code> doesn&rsquo;t seem to affect anything, so let&rsquo;s remove it first.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if foo == 0 {
-    ......
-} else if foo == 1 {
-    ......
-} else if foo == 2 {
-    ......
-} else {
-    ......
-}
-</code></pre></div><p>We assume that <code>else if</code> can&rsquo;t be a line break either, it has to be followed by <code>}</code>. With this constraint, we can omit <code>else if</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if foo == 0 {
-    ......
-} foo == 1 {
-    ......
-} foo == 2 {
-    ......
-} else {
-    ......
-}
-</code></pre></div><p>By the same token, <code>else</code> is not really needed; we can replace it with <code>|</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if (foo == 0) {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} else if (foo == 1) {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} else if (foo == 2) {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} else {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Removing <code>()</code> doesn&rsquo;t seem to affect anything, so let&rsquo;s remove it first.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if foo == 0 {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} else if foo == 1 {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} else if foo == 2 {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} else {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We assume that <code>else if</code> can&rsquo;t be a line break either, it has to be followed by <code>}</code>. With this constraint, we can omit <code>else if</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if foo == 0 {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} foo == 1 {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} foo == 2 {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} else {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>By the same token, <code>else</code> is not really needed; we can replace it with <code>|</code>.</p>
 <p>For consistency, we also use <code>|</code> in the <code>else if</code> position.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if foo == 0 {
-    ......
-} | foo == 1 {
-    ......
-} | foo == 2 {
-    ......
-} | {
-    ......
-}
-</code></pre></div><p>Now there is only one <code>if</code> left, we replace it with <code>?</code> for selectivity, replacing it with <code>?</code></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">? foo == 0 {
-    ......
-} | foo == 1 {
-    ......
-} | foo == 2 {
-    ......
-} | {
-    ......
-}
-</code></pre></div><p>Now that we&rsquo;ve completed the basic form of the selection structure, we&rsquo;re compressing more code by forcing the specification.</p>
-<h2 id="loop-structure">Loop structure</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>if foo == 0 {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} | foo == 1 {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} | foo == 2 {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} | {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now there is only one <code>if</code> left, we replace it with <code>?</code> for selectivity, replacing it with <code>?</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>? foo == 0 {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} | foo == 1 {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} | foo == 2 {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>} | {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now that we&rsquo;ve completed the basic form of the selection structure, we&rsquo;re compressing more code by forcing the specification.</p>
+<h2 id="loop-structure">
+  Loop structure
+  <a class="heading-link" href="#loop-structure">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p><code>for</code> is the most common type of loop structure, and we continue to try to simplify it further.</p>
 <p>The simplest example is given first.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for (let i in foo) {
-    ......
-}
-</code></pre></div><p>Omit the less useful `()&rsquo;.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for let i in foo {
-    ......
-}
-</code></pre></div><p><code>let</code> is used to define the object to be retrieved from the set, and we can change the definition syntax to the previous one.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for i := in foo {
-    ......
-}
-</code></pre></div><p>We can replace <code>in</code> with another syntax, <code>... </code> to represent the expansion of a set, so we can replace <code>in</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for i := foo... {
-    ......
-}
-</code></pre></div><p>Now there is only the <code>for</code> keyword left, and <code>@</code> is perfect for specifying the selected thing, which we replace.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@ i := foo... {
-    ......
-}
-</code></pre></div><p>This gives us the basic shape of the circular structure.</p>
-<h2 id="object-templates">Object templates</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>for (let i in foo) {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Omit the less useful `()'.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>for let i in foo {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>let</code> is used to define the object to be retrieved from the set, and we can change the definition syntax to the previous one.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>for i := in foo {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We can replace <code>in</code> with another syntax, <code>... </code> to represent the expansion of a set, so we can replace <code>in</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>for i := foo... {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now there is only the <code>for</code> keyword left, and <code>@</code> is perfect for specifying the selected thing, which we replace.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>@ i := foo... {
+</span></span><span style="display:flex;"><span>    ......
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This gives us the basic shape of the circular structure.</p>
+<h2 id="object-templates">
+  Object templates
+  <a class="heading-link" href="#object-templates">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>A type is a way for us to describe the data and behavior of an object, and we can use it both as a template for constructing data and should be able to think of it as an interface for describing behavior.</p>
 <p>This allows us to use it as a static duck type that carries data, behavior, and the ability to impose constraints at the same time.</p>
 <p>Suppose we call it a <code>class</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">class Foo {
-    var label = &#34;I am Label&#34;
-    let Show = func() {
-        Print(label)
-    }
-}
-</code></pre></div><p><code>Foo</code> contains both fields and functions, which can be used consistently.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>class Foo {
+</span></span><span style="display:flex;"><span>    var label = &#34;I am Label&#34;
+</span></span><span style="display:flex;"><span>    let Show = func() {
+</span></span><span style="display:flex;"><span>        Print(label)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>Foo</code> contains both fields and functions, which can be used consistently.</p>
 <p>Let&rsquo;s start by replacing the syntax with a uniform definition.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := class {
-    label := &#34;I am Label&#34;
-    Show := (-&gt;) {
-        Print(label)
-    }
-}
-</code></pre></div><p>We can remove the unique keyword <code>class</code> and replace it with another <code>$</code>, which is often used for templates.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := $ {
-    label := &#34;I am Label&#34;
-    Show := (-&gt;) {
-        Print(label)
-    }
-}
-</code></pre></div><p>Every type needs to construct data objects in some way, and this behavior is actually very similar to functions. We pass the value needed for the field, and an object is returned. So why don&rsquo;t we associate types with functions and use arguments to construct the fields.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Foo := $(label := &#34;I am Label&#34;) {
-    Show := (-&gt;) {
-        Print(label)
-    }
-}
-</code></pre></div><p>This allows us to reuse the function&rsquo;s properties, such as named parameters, default parameters, etc., at the location of the field.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Foo := class {
+</span></span><span style="display:flex;"><span>    label := &#34;I am Label&#34;
+</span></span><span style="display:flex;"><span>    Show := (-&gt;) {
+</span></span><span style="display:flex;"><span>        Print(label)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We can remove the unique keyword <code>class</code> and replace it with another <code>$</code>, which is often used for templates.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Foo := $ {
+</span></span><span style="display:flex;"><span>    label := &#34;I am Label&#34;
+</span></span><span style="display:flex;"><span>    Show := (-&gt;) {
+</span></span><span style="display:flex;"><span>        Print(label)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Every type needs to construct data objects in some way, and this behavior is actually very similar to functions. We pass the value needed for the field, and an object is returned. So why don&rsquo;t we associate types with functions and use arguments to construct the fields.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Foo := $(label := &#34;I am Label&#34;) {
+</span></span><span style="display:flex;"><span>    Show := (-&gt;) {
+</span></span><span style="display:flex;"><span>        Print(label)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This allows us to reuse the function&rsquo;s properties, such as named parameters, default parameters, etc., at the location of the field.</p>
 <p>Now we build the object as a function. For some degree of distinction, <code>$</code> has been left in the call here.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">a := Foo$()
-a.Show()
-</code></pre></div><p>Based on the properties of the duck type, we can define an interface to the <code>Shower</code> to use the behavior of <code>Foo</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>a := Foo$()
+</span></span><span style="display:flex;"><span>a.Show()
+</span></span></code></pre></div><p>Based on the properties of the duck type, we can define an interface to the <code>Shower</code> to use the behavior of <code>Foo</code>.</p>
 <p>With the above syntax, we can describe an interface by simply dropping <code>()</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Shower := $ {
-    Show : (-&gt;)
-}
-
-Use_Shower := (s : Shower-&gt;) {
-    s.Show()
-}
-
-Use_Shower( Foo$() )
-</code></pre></div><p>Since <code>Foo</code> has a <code>Show</code> method, it can be used naturally as a <code>Shower</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Shower := $ {
+</span></span><span style="display:flex;"><span>    Show : (-&gt;)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Use_Shower := (s : Shower-&gt;) {
+</span></span><span style="display:flex;"><span>    s.Show()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Use_Shower( Foo$() )
+</span></span></code></pre></div><p>Since <code>Foo</code> has a <code>Show</code> method, it can be used naturally as a <code>Shower</code>.</p>
 <p>We then introduce a syntax that introduces a delegate within the object template, which automatically implies everything about it according to the type it specifies, thus making it easy to reuse code.</p>
 <p>For example, <code>Reader</code> contains a <code>Shower</code>, then <code>Reader</code> contains <code>Show</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Reader := $ {
-    Shower
-
-    Read : (-&gt;v : string)
-}
-</code></pre></div><p>Then we can also make the <code>Bar</code> contain <code>Foo</code>, then <code>Bar</code> contain the <code>label</code> and <code>Show</code>.`</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Bar := $(foo := Foo$()) {
-    foo
-
-    Read := (-&gt;v : string) {
-        &lt;- label
-    }
-}
-</code></pre></div><p>At this point we can use the <code>Bar</code> as if it were a <code>Reader</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Use_Reader := (r : Reader-&gt;) {
-    r.Show()
-    Print(r.Read())
-}
-
-Use_Reader( Bar$() )
-</code></pre></div><p>We implement some of the object-oriented features with the help of delegate and duck types, without relying on inheritance, choosing a balance between static and dynamic types.</p>
-<h2 id="finally">Finally</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Reader := $ {
+</span></span><span style="display:flex;"><span>    Shower
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Read : (-&gt;v : string)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Then we can also make the <code>Bar</code> contain <code>Foo</code>, then <code>Bar</code> contain the <code>label</code> and <code>Show</code>.`</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Bar := $(foo := Foo$()) {
+</span></span><span style="display:flex;"><span>    foo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Read := (-&gt;v : string) {
+</span></span><span style="display:flex;"><span>        &lt;- label
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>At this point we can use the <code>Bar</code> as if it were a <code>Reader</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Use_Reader := (r : Reader-&gt;) {
+</span></span><span style="display:flex;"><span>    r.Show()
+</span></span><span style="display:flex;"><span>    Print(r.Read())
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Use_Reader( Bar$() )
+</span></span></code></pre></div><p>We implement some of the object-oriented features with the help of delegate and duck types, without relying on inheritance, choosing a balance between static and dynamic types.</p>
+<h2 id="finally">
+  Finally
+  <a class="heading-link" href="#finally">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p><a href="https://github.com/kulics-works/feel">Welcome star https://github.com/kulics-works/feel</a></p>
 <p>The Feel language is currently experimental and not production ready, and some designs may be released with the llvm side of the Changes due to push, discussion email (<a href="mailto:kulics@outlook.com">kulics@outlook.com</a>) or issue are welcome.</p>
 <p>Posting another snippet of leetcode #16 for reference</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ThreeSumClosest := (nums : List[Int], target : Int -&gt; v : Int) {
-    length := nums.Size()
-    nums.sort()
-    closs := nums.(0) + nums.(1) + nums.(2)
-    @ i := 0.Up_until(length)... {
-        l, r := i + 1, length - 1
-        @ l &lt; r {
-            sum := nums.(i) + nums.(l) + nums.(r)
-            ? abs(sum - target) &lt; abs(closs - target) {
-                closs = sum
-            } | sum &gt; target {
-                r -= 1
-            } | {
-                l += 1
-            }
-        }
-    }
-    &lt;- closs
-}
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>ThreeSumClosest := (nums : List[Int], target : Int -&gt; v : Int) {
+</span></span><span style="display:flex;"><span>    length := nums.Size()
+</span></span><span style="display:flex;"><span>    nums.sort()
+</span></span><span style="display:flex;"><span>    closs := nums.(0) + nums.(1) + nums.(2)
+</span></span><span style="display:flex;"><span>    @ i := 0.Up_until(length)... {
+</span></span><span style="display:flex;"><span>        l, r := i + 1, length - 1
+</span></span><span style="display:flex;"><span>        @ l &lt; r {
+</span></span><span style="display:flex;"><span>            sum := nums.(i) + nums.(l) + nums.(r)
+</span></span><span style="display:flex;"><span>            ? abs(sum - target) &lt; abs(closs - target) {
+</span></span><span style="display:flex;"><span>                closs = sum
+</span></span><span style="display:flex;"><span>            } | sum &gt; target {
+</span></span><span style="display:flex;"><span>                r -= 1
+</span></span><span style="display:flex;"><span>            } | {
+</span></span><span style="display:flex;"><span>                l += 1
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    &lt;- closs
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
       </div>
+
 
       <footer>
         
@@ -584,7 +662,7 @@ Use_Reader( Bar$() )
 
         <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -607,21 +685,36 @@ Use_Reader( Bar$() )
       </footer>
     </article>
 
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+    integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+    integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+    onload="renderMathInElement(document.body,
+      {
+        delimiters: [
+          {left: '$$', right: '$$', display:true},
+          {left: '$', right: '$', display:false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ]
+      }
+    );"></script>
   </section>
 
       </div>
 
       <footer class="footer">
   <section class="container">
+    ©
     
-      <p>Open thinking.</p>
+    2022
+     Kulics 
+    ·
     
-     © 2020
-    
-       · 
-       <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-    
+     <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
     
   </section>
 </footer>
@@ -629,7 +722,25 @@ Use_Reader( Bar$() )
     </main>
 
     
+      
+      <script src="https://kulics.github.io/js/coder.min.8fb86376a16e684af472a329aef502dbebcfab65ce264e9750d144912947c602.js" integrity="sha256-j7hjdqFuaEr0cqMprvUC2&#43;vPq2XOJk6XUNFEkSlHxgI="></script>
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
   </body>
 
 </html>
