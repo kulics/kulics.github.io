@@ -3,14 +3,14 @@ title = "kulics"
 theme = "hugo-coder"
 
 languageCode = "zh"
-defaultcontentlanguage = "zh"
+defaultContentLanguage = "zh"
 
 paginate = 20
-canonifyurls = true
 
-pygmentsstyle = "bw"
-pygmentscodefences = true
-pygmentscodefencesguesssyntax = true
+pygmentsStyle = "bw"
+pygmentsCodeFences = true
+pygmentsCodeFencesGuessSyntax = true
+enableEmoji = true
 
 disqusShortname = "yourdiscussshortname"
 
@@ -19,7 +19,7 @@ disqusShortname = "yourdiscussshortname"
     info = "Normal Developer"
     description = "Kulics' personal website"
     keywords = "blog,developer,personal"
-    avatarurl = "images/avatar.jpg"
+    avatarURL = "images/avatar.jpg"
 
     favicon_32 = "/img/favicon-32x32.png"
     favicon_16 = "/img/favicon-16x16.png"
@@ -29,9 +29,14 @@ disqusShortname = "yourdiscussshortname"
     hidecredits = false
     hidecopyright = false
 
+    dateFormat = "January 2, 2006"
+    since = 2019
+
     rtl = false
 
     math = true
+    maxSeeAlsoItems = 5
+    colorScheme = "auto"
     custom_css = ["css/custom.css"]
 
 # Social links
